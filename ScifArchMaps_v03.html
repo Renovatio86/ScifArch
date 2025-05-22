@@ -420,7 +420,7 @@
                 return filterValues;
             }
 
-            function processAndSetupFilters(jsonData) { // Renamed from processAndDisplayEmbeddedData
+            function processAndSetupFilters(jsonData) { 
                 try {
                     if (!Array.isArray(jsonData)) {
                         displayError("Data error: Expected an array of objects from JSON file.");
@@ -460,7 +460,7 @@
                     } else if (totalParsedLocations > 0) {
                         dataStatusMessageEl.textContent = 'Data loaded successfully!';
                         dataStatusMessageEl.style.color = '#3FB950'; 
-                    } else {
+                    } else { // This means jsonData itself was empty or became empty after filtering nulls
                         dataStatusMessageEl.textContent = 'No data in file or file not found.';
                          dataStatusMessageEl.style.color = '#8B949E';
                     }
@@ -474,7 +474,7 @@
                     populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
                     populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
                     
-                    return allPlacesData; // Return the processed data
+                    return allPlacesData; 
                 } catch (error) {
                     console.error("Error processing JSON data:", error);
                     displayError(`Data processing error: ${error.message}`); 
@@ -491,20 +491,19 @@
                 try {
                     const response = await fetch(DATA_FILE_URL); 
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status} while fetching ${DATA_FILE_URL}`);
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${DATA_FILE_URL}. Make sure 'map_data.json' is in the same directory as this HTML file on the server.`);
                     }
                     const jsonData = await response.json();
-                    const places = processAndSetupFilters(jsonData); // Process and setup filters
+                    const places = processAndSetupFilters(jsonData); 
                     if (places.length > 0) {
-                        displayFilteredPlaces(places); // Display all initially
-                    } else if (jsonData.length === 0) { // If file was empty
+                        displayFilteredPlaces(places); 
+                    } else if (jsonData.length === 0) { 
                         dataStatusMessageEl.textContent = 'Map data file is empty.';
                         dataStatusMessageEl.style.color = '#8B949E';
                     }
-                    // Further status messages handled by processAndSetupFilters
                 } catch (error) {
                     console.error('Fetch Data File Error:', error);
-                    displayError(`Failed to load map_data.json: ${error.message}`);
+                    displayError(`Failed to load or parse map_data.json: ${error.message}`);
                 }
             }
             
@@ -594,7 +593,6 @@
                 }, 310); 
             });
 
-            // Load data from external JSON file on initial page load
             loadDataFromFile();
 
             window.addEventListener('resize', function() { map.invalidateSize(); });
