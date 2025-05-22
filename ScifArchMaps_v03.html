@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark OSM Navigator (from JSON file)</title>
+    <title>Minimalist OSM Navigator (from JSON file)</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -11,100 +11,198 @@
     <style>
         body {
             font-family: 'Inter', sans-serif; display: flex; height: 100vh;
-            overflow: hidden; background-color: #111827; color: #f3f4f6;
+            overflow: hidden; background-color: #0D1117; /* Even darker bg */ color: #C9D1D9; /* GitHub dark text */
         }
         #filter-sidebar {
-            width: 260px; background-color: #1f2937; padding: 16px; overflow-y: auto;
-            display: flex; flex-direction: column; border-right: 1px solid #374151;
+            width: 240px; /* Further reduced width */
+            background-color: #161B22; /* GitHub dark sidebar */
+            padding: 12px; /* Reduced padding */
+            overflow-y: auto;
+            display: flex; flex-direction: column;
+            border-right: 1px solid #30363D; /* GitHub dark border */
+            transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease; /* Smooth transition */
         }
+        #filter-sidebar.hidden {
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
         #filter-sidebar h2 {
-            font-size: 1.125rem; font-weight: 600; margin-bottom: 12px;
-            color: #e5e7eb; border-bottom: 1px solid #4b5563; padding-bottom: 6px;
+            font-size: 1rem; /* text-md, reduced */
+            font-weight: 600; 
+            margin-bottom: 10px; 
+            color: #C9D1D9; 
+            border-bottom: 1px solid #30363D; 
+            padding-bottom: 5px; 
         }
-        .filter-group { margin-bottom: 12px; }
+
+        .filter-group {
+            margin-bottom: 10px; 
+        }
+
         .filter-group label {
-            display: block; margin-bottom: 4px; font-size: 0.75rem;
-            font-weight: 500; color: #9ca3af;
+            display: block;
+            margin-bottom: 3px; 
+            font-size: 0.65rem; /* text-2xs, further reduced */
+            font-weight: 400; /* Lighter weight */
+            color: #8B949E; /* GitHub dark secondary text */
+            text-transform: uppercase;
         }
+
         .filter-group select {
-            width: 100%; padding: 6px 8px; background-color: #374151;
-            color: #e5e7eb; border: 1px solid #4b5563; border-radius: 4px;
-            font-size: 0.75rem;
+            width: 100%;
+            padding: 4px 6px; /* Further reduced padding */
+            background-color: #0D1117; /* Match body bg */
+            color: #C9D1D9; 
+            border: 1px solid #30363D; 
+            border-radius: 0; /* No rounded corners */
+            font-size: 0.7rem; /* Further reduced */
+            appearance: none; /* Remove default arrow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%238B949E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
         }
-        .filter-group select:focus {
-            outline: none; border-color: #4f46e5; box-shadow: 0 0 0 2px #4f46e560;
+         .filter-group select:focus {
+            outline: none;
+            border-color: #58A6FF; /* GitHub dark blue */
+            box-shadow: 0 0 0 1px #58A6FF;
         }
+        
         #locationCounter {
-            font-size: 0.75rem; color: #9ca3af; margin-top: 8px;
-            margin-bottom: 8px; text-align: center;
+            font-size: 0.65rem; 
+            color: #8B949E; 
+            margin-top: 6px; 
+            margin-bottom: 6px; 
+            text-align: center;
         }
         .controls-area { 
-            padding-bottom: 10px; margin-bottom:10px;
-            border-bottom: 1px solid #4b5563;
+            padding-bottom: 8px; margin-bottom:8px;
+            border-bottom: 1px solid #30363D;
         }
-        #data-status-message { /* Status message for data loading */
-            padding: 10px 0px; color: #9ca3af; font-size: 0.875rem; text-align: center;
+        #data-status-message { 
+            padding: 8px 0px; color: #8B949E; font-size: 0.75rem; text-align: center;
         }
 
         .filter-buttons {
-            margin-top: auto; padding-top: 12px; border-top: 1px solid #4b5563;
+            margin-top: auto; padding-top: 10px; border-top: 1px solid #30363D; 
         }
+        
         .filter-buttons button {
-            width: 100%; padding: 8px; border-radius: 4px; font-size: 0.875rem;
-            font-weight: 500; cursor: pointer; transition: background-color 0.2s ease-in-out;
-            border: none;
+            width: 100%;
+            padding: 6px; 
+            border-radius: 3px; /* Minimal rounding */
+            font-size: 0.75rem; 
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            border: 1px solid #30363D;
         }
-        #applyFiltersBtn {
-            background-color: #4f46e5; color: white; margin-bottom: 6px;
-        }
-        #applyFiltersBtn:hover { background-color: #4338ca; }
-        #clearFiltersBtn {
-            background-color: #4b5563; color: #e5e7eb;
-        }
-        #clearFiltersBtn:hover { background-color: #6b7280; }
 
-        #map-container { flex-grow: 1; position: relative; }
-        #map { height: 100%; width: 100%; background-color: #1a1a1a; }
+        #applyFiltersBtn {
+            background-color: #238636; /* GitHub dark green */
+            color: white;
+            margin-bottom: 5px; 
+        }
+        #applyFiltersBtn:hover {
+            background-color: #2EA043; 
+        }
+        #clearFiltersBtn {
+            background-color: #21262D; /* GitHub dark button bg */
+            color: #C9D1D9; 
+        }
+        #clearFiltersBtn:hover {
+            background-color: #30363D; 
+        }
+
+
+        #map-container { 
+            flex-grow: 1;
+            position: relative; 
+            transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for map */
+        }
+        #map { 
+            height: 100%;
+            width: 100%;
+            background-color: #010409; /* Even darker map bg */
+        }
 
         .leaflet-popup-content-wrapper {
-            background: #1f2937; color: #f3f4f6; border-radius: 8px; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); max-height: 380px; overflow-y: auto; 
+            background: #161B22; color: #C9D1D9; border-radius: 3px; /* Minimal rounding */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5); 
+            max-height: 320px; /* Further reduced */
+            border: 1px solid #30363D;
         }
         .leaflet-popup-content { 
-            margin: 12px 16px; font-size: 0.875rem; line-height: 1.5; 
+            margin: 10px 12px; /* Reduced margin */
+            font-size: 0.75rem; /* text-xs */
+            line-height: 1.4; 
         }
+       
         .leaflet-popup-tip-container { display: none; }
-        .leaflet-popup-close-button { color: #d1d5db !important; padding: 8px 8px 0 0 !important; z-index: 100; }
-        .leaflet-popup-close-button:hover { color: #f9fafb !important; background: transparent !important; }
+        .leaflet-popup-close-button { color: #8B949E !important; padding: 6px 6px 0 0 !important; z-index: 100; }
+        .leaflet-popup-close-button:hover { color: #C9D1D9 !important; background: transparent !important; }
 
         .popup-image {
-            max-width: 100%; height: auto; max-height: 120px; object-fit: cover;
-            border-radius: 6px; margin-bottom: 10px; border: 1px solid #374151;
+            max-width: 100%; height: auto; max-height: 100px; /* Reduced */
+            object-fit: cover;
+            border-radius: 3px; margin-bottom: 8px; border: 1px solid #30363D;
             display: block; margin-left: auto; margin-right: auto;
         }
         .popup-main-title {
-            font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; 
-            color: #e5e7eb; border-bottom: 1px solid #374151; padding-bottom: 6px; 
+            font-size: 1rem; /* text-base, Reduced */
+            font-weight: 600; 
+            margin-bottom: 6px; 
+            color: #C9D1D9; border-bottom: 1px solid #30363D; padding-bottom: 4px; 
         }
         .popup-details-grid {
             display: grid; grid-template-columns: auto 1fr;
-            gap: 4px 8px; font-size: 0.75rem; 
+            gap: 3px 6px; 
+            font-size: 0.7rem; /* Further reduced */
         }
-        .popup-detail-item strong { color: #9ca3af; font-weight: 500; }
-        .popup-detail-item span { color: #d1d5db; word-break: break-word; }
+        .popup-detail-item strong { color: #8B949E; font-weight: 500; }
+        .popup-detail-item span { color: #C9D1D9; word-break: break-word; }
         .popup-detail-item span a, .popup-detail-item span .link-list a {
-            color: #818cf8; text-decoration: underline; text-decoration-color: #6366f1;
+            color: #58A6FF; text-decoration: underline; text-decoration-color: #58A6FF;
         }
         .popup-detail-item span a:hover, .popup-detail-item span .link-list a:hover {
-            color: #a5b4fc; text-decoration-color: #818cf8;
+            color: #79C0FF; 
         }
         .link-list-item:not(:last-child)::after { content: ", "; white-space: pre; }
         
         .custom-marker-icon { 
-            border-radius: 50%; width: 12px !important; height: 12px !important;
-            border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            border-radius: 50%; width: 10px !important; height: 10px !important; /* Smaller */
+            border: 1.5px solid white; box-shadow: 0 0 3px rgba(0,0,0,0.4);
         }
+        
+        #toggleSidebarBtn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1001; /* Above map, below popups if any */
+            background-color: #21262D;
+            color: #C9D1D9;
+            border: 1px solid #30363D;
+            padding: 4px 8px;
+            font-size: 1rem; /* For icon */
+            cursor: pointer;
+            border-radius: 3px;
+            line-height: 1;
+        }
+        #toggleSidebarBtn:hover {
+            background-color: #30363D;
+        }
+
     </style>
+
+    <script id="notionMapData" type="application/json">
+    [
+        // PASTE YOUR JSON DATA ARRAY HERE
+    ]
+    </script>
+
 </head>
 <body>
 
@@ -149,7 +247,7 @@
     </div>
 
     <div id="map-container">
-        <div id="map"></div>
+        <button id="toggleSidebarBtn">☰</button> <div id="map"></div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
@@ -157,7 +255,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const DATA_FILE_URL = './map_data.json'; // Assumes map_data.json is in the same directory
+            const DATA_FILE_URL = './map_data.json'; 
 
             const map = L.map('map', {
                 zoomControl: false
@@ -171,13 +269,16 @@
             
             const dataStatusMessageEl = document.getElementById('data-status-message');
             const locationCounterEl = document.getElementById('locationCounter'); 
+            const filterSidebarEl = document.getElementById('filter-sidebar');
+            const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+            const mapContainerEl = document.getElementById('map-container');
             
             let allPlacesData = []; 
             let totalParsedLocations = 0; 
             
             const statusColors = {
-                'Built': '#4ade80', 'Demolished': '#f87171', 'Renovated': '#60a5fa',
-                'Under Construction': '#facc15', 'Proposed': '#c084fc', 'default': '#9ca3af'
+                'Built': '#3FB950', 'Demolished': '#F85149', 'Renovated': '#58A6FF', // GitHub-like colors
+                'Under Construction': '#DBAB0A', 'Proposed': '#A371F7', 'default': '#8B949E'
             };
 
             let markersLayer = L.markerClusterGroup({ 
@@ -189,9 +290,9 @@
                     var firstChild = cluster.getAllChildMarkers()[0];
                     var statusOfFirst = (firstChild && firstChild.options && firstChild.options.status) ? firstChild.options.status : 'default';
                     var bgColor = statusColors[statusOfFirst] || statusColors['default'];
-                    var diameter = childCount < 10 ? 28 : (childCount < 100 ? 38 : 48);
+                    var diameter = childCount < 10 ? 24 : (childCount < 100 ? 32 : 40); // Smaller cluster icons
                     return L.divIcon({
-                        html: `<div style="background-color: ${bgColor}; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; font-weight: bold; font-size: ${diameter / 2.8}px;">${childCount}</div>`,
+                        html: `<div style="background-color: ${bgColor}; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; font-weight: 500; font-size: ${diameter / 3}px;">${childCount}</div>`,
                         className: '', 
                         iconSize: L.point(diameter, diameter)
                     });
@@ -224,7 +325,7 @@
                 return L.divIcon({
                     className: 'custom-marker-icon', 
                     html: `<span style="background-color:${color}; display:block; width:100%; height:100%; border-radius:50%;"></span>`,
-                    iconSize: [12, 12], iconAnchor: [8, 8] 
+                    iconSize: [10, 10], iconAnchor: [6, 6] // Adjusted for smaller icon
                 });
             }
             
@@ -239,7 +340,7 @@
             function displayError(message) { 
                 console.error(message); 
                 dataStatusMessageEl.textContent = `Error: ${message}`;
-                dataStatusMessageEl.style.color = '#f87171'; // Red for error
+                dataStatusMessageEl.style.color = '#F85149'; // GitHub dark error red
                 updateLocationCounter(0, 0); 
             }
             
@@ -326,67 +427,78 @@
                 return filterValues;
             }
 
-            function processAndSetupFilters(jsonData) { 
+            function processAndDisplayEmbeddedData() { 
+                dataStatusMessageEl.textContent = 'Processing data...';
+                dataStatusMessageEl.style.color = '#8B949E'; 
+                
+                const dataScriptElement = document.getElementById('notionMapData');
+                let jsonData;
                 try {
-                    if (!Array.isArray(jsonData)) {
-                        displayError("Data error: Expected an array of objects from JSON file.");
-                        totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
+                    const rawJsonString = dataScriptElement.textContent.trim();
+                    if (!rawJsonString.startsWith('[') || !rawJsonString.endsWith(']')) {
+                        throw new Error("Embedded data format error.");
                     }
-                    allPlacesData = jsonData.map((item, index) => { 
-                        const itemName = item[config.nameProperty] || 'Unnamed Item';
-                        let rawLat = item[config.latProperty];
-                        let rawLon = item[config.lonProperty];
-                        let latString = rawLat !== null && rawLat !== undefined ? String(rawLat).replace(/^\uFEFF/, '').trim() : '';
-                        let lonString = rawLon !== null && rawLon !== undefined ? String(rawLon).replace(/^\uFEFF/, '').trim() : '';
-                        const latitude = parseFloat(latString);
-                        const longitude = parseFloat(lonString);
-
-                        if (isNaN(latitude) || isNaN(longitude)) {
-                            console.warn(`SKIPPING item ${index} ("${itemName}"): invalid coordinates. Original Lat: "${rawLat}", Original Lon: "${rawLon}", Parsed Lat: ${latitude}, Parsed Lon: ${longitude}`); 
-                            return null;
-                        }
-                        let photoUrl = item[config.photoProperty] || 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image';
-                        if (photoUrl && !photoUrl.startsWith('http') && !photoUrl.startsWith('//') && photoUrl !== 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image') {
-                           photoUrl = 'https://placehold.co/400x200/374151/E5E7EB?text=Invalid+URL';
-                        }
-                        return { 
-                            id: item[config.idProperty] || `json-item-${index}`,
-                            name: itemName, coords: [latitude, longitude], photoUrl: photoUrl,
-                            status: item[config.filterKeys.status], 
-                            allData: item 
-                        };
-                    }).filter(item => item !== null);
-
-                    totalParsedLocations = allPlacesData.length; 
-                    updateLocationCounter(allPlacesData.length, totalParsedLocations); 
-
-                    if (totalParsedLocations > 0) {
-                        dataStatusMessageEl.textContent = 'Data loaded successfully!';
-                        dataStatusMessageEl.style.color = '#4ade80'; // Green for success
-                    } else if (jsonData.length > 0 && totalParsedLocations === 0) {
-                        dataStatusMessageEl.textContent = 'No valid locations in data.';
-                        dataStatusMessageEl.style.color = '#facc15'; // Yellow for warning
-                    } else {
-                        dataStatusMessageEl.textContent = 'No data loaded.';
-                        dataStatusMessageEl.style.color = '#9ca3af';
-                    }
-
-                    const uniqueFilterValues = extractFilterValues(allPlacesData.map(p => p.allData)); 
-                    populateFilterDropdown(architectFilterEl, uniqueFilterValues.architect);
-                    populateFilterDropdown(styleFilterEl, uniqueFilterValues.style);
-                    populateFilterDropdown(statusFilterEl, uniqueFilterValues.status);
-                    populateFilterDropdown(cityRegionFilterEl, uniqueFilterValues.cityRegion);
-                    populateFilterDropdown(countryFilterEl, uniqueFilterValues.country);
-                    populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
-                    populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
-                    
-                    console.log(`Total items processed and kept: ${totalParsedLocations}`);
-                    return allPlacesData; 
+                    jsonData = JSON.parse(rawJsonString);
                 } catch (error) {
-                    console.error("Error processing JSON data:", error);
-                    displayError(`Data processing error: ${error.message}`); 
-                    totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
+                    console.error("Error parsing embedded JSON data:", error);
+                    displayError(`Invalid embedded JSON. Please check data.`);
+                    return;
                 }
+
+                if (!Array.isArray(jsonData)) {
+                    displayError("Embedded data error: Expected an array.");
+                    totalParsedLocations = 0; updateLocationCounter(0, 0); return;
+                }
+
+                allPlacesData = jsonData.map((item, index) => { 
+                    const itemName = item[config.nameProperty] || 'Unnamed Item';
+                    let rawLat = item[config.latProperty];
+                    let rawLon = item[config.lonProperty];
+                    let latString = rawLat !== null && rawLat !== undefined ? String(rawLat).replace(/^\uFEFF/, '').trim() : '';
+                    let lonString = rawLon !== null && rawLon !== undefined ? String(rawLon).replace(/^\uFEFF/, '').trim() : '';
+                    const latitude = parseFloat(latString);
+                    const longitude = parseFloat(lonString);
+
+                    if (isNaN(latitude) || isNaN(longitude)) {
+                        console.warn(`SKIPPING item ${index} ("${itemName}"): invalid coordinates. Original Lat: "${rawLat}", Original Lon: "${rawLon}", Parsed Lat: ${latitude}, Parsed Lon: ${longitude}`); 
+                        return null;
+                    }
+                    let photoUrl = item[config.photoProperty] || 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image';
+                    if (photoUrl && !photoUrl.startsWith('http') && !photoUrl.startsWith('//') && photoUrl !== 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image') {
+                       photoUrl = 'https://placehold.co/400x200/374151/E5E7EB?text=Invalid+URL';
+                    }
+                    return { 
+                        id: item[config.idProperty] || `json-item-${index}`,
+                        name: itemName, coords: [latitude, longitude], photoUrl: photoUrl,
+                        status: item[config.filterKeys.status], 
+                        allData: item 
+                    };
+                }).filter(item => item !== null);
+
+                totalParsedLocations = allPlacesData.length; 
+                updateLocationCounter(allPlacesData.length, totalParsedLocations); 
+
+                if (totalParsedLocations === 0 && jsonData.length > 0) {
+                     dataStatusMessageEl.textContent = 'No valid locations found.';
+                     dataStatusMessageEl.style.color = '#DBAB0A'; 
+                } else if (totalParsedLocations > 0) {
+                    dataStatusMessageEl.textContent = 'Data loaded.';
+                    dataStatusMessageEl.style.color = '#3FB950'; 
+                } else {
+                    dataStatusMessageEl.textContent = 'No data embedded.';
+                     dataStatusMessageEl.style.color = '#8B949E';
+                }
+
+                const uniqueFilterValues = extractFilterValues(allPlacesData.map(p => p.allData)); 
+                populateFilterDropdown(architectFilterEl, uniqueFilterValues.architect);
+                populateFilterDropdown(styleFilterEl, uniqueFilterValues.style);
+                populateFilterDropdown(statusFilterEl, uniqueFilterValues.status);
+                populateFilterDropdown(cityRegionFilterEl, uniqueFilterValues.cityRegion);
+                populateFilterDropdown(countryFilterEl, uniqueFilterValues.country);
+                populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
+                populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
+                
+                displayFilteredPlaces(allPlacesData); 
             }
             
             function displayFilteredPlaces(placesToDisplay) {
@@ -418,41 +530,6 @@
                     map.setView([20.0, 0.0], 2);
                 }
             }
-            
-            async function loadDataFromFile() {
-                dataStatusMessageEl.textContent = 'Loading data from file...';
-                dataStatusMessageEl.style.color = '#e5e7eb';
-                totalParsedLocations = 0; 
-                updateLocationCounter(0,0); 
-
-                try {
-                    const response = await fetch(DATA_FILE_URL); 
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status} while fetching ${DATA_FILE_URL}`);
-                    }
-                    const jsonData = await response.json();
-                    const places = processAndSetupFilters(jsonData); 
-                    if (places.length > 0) {
-                        displayFilteredPlaces(places);
-                    } else if (jsonData.length === 0) {
-                        dataStatusMessageEl.textContent = 'Data file is empty.';
-                        dataStatusMessageEl.style.color = '#9ca3af';
-                    }
-                    // Error/success message is handled within processAndSetupFilters
-                } catch (error) {
-                    console.error('Fetch Data File Error:', error);
-                    displayError(`Failed to load data from file: ${error.message}`);
-                }
-            }
-
-            applyFiltersBtn.addEventListener('click', applyFilters);
-            clearFiltersBtn.addEventListener('click', clearAllFilters);
-
-            // Load data on initial page load
-            loadDataFromFile(); 
-
-            window.addEventListener('resize', function() { map.invalidateSize(); });
-            updateLocationCounter(0,0); 
             
             function applyFilters() {
                 const selectedArchitect = architectFilterEl.value;
@@ -499,6 +576,22 @@
                 inTheMediaFilterEl.value = 'All'; 
                 displayFilteredPlaces(allPlacesData); 
             }
+
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            clearFiltersBtn.addEventListener('click', clearAllFilters);
+            
+            toggleSidebarBtn.addEventListener('click', function() {
+                filterSidebarEl.classList.toggle('hidden');
+                // Invalidate map size after a short delay to allow CSS transition
+                setTimeout(function() {
+                    map.invalidateSize();
+                }, 310); // Slightly longer than the CSS transition
+            });
+
+
+            processAndDisplayEmbeddedData();
+
+            window.addEventListener('resize', function() { map.invalidateSize(); });
         });
     </script>
 </body>
