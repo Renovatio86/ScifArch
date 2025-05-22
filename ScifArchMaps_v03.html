@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist OSM Navigator (Embedded JSON)</title>
+    <title>Minimalist OSM Navigator (Loads External JSON)</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -196,20 +196,7 @@
         }
 
     </style>
-
-    <!-- 
-        IMPORTANT DATA PLACEMENT:
-        1. Generate your JSON data array using the Python script.
-        2. Copy the ENTIRE JSON array (it should start with '[' and end with ']').
-        3. !!! CRITICAL: Delete EVERYTHING between the <script> tags below, including this comment block AND the placeholder [].
-        4. Paste your copied JSON data array directly. Ensure no extra characters or comments are inside the pasted JSON.
-           The content between <script ...> and </script> should ONLY be your valid JSON array.
-    -->
-    <script id="notionMapData" type="application/json">
-    []
-    </script>
-
-</head>
+    </head>
 <body>
 
     <div id="filter-sidebar">
@@ -262,7 +249,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // const DATA_FILE_URL = './map_data.json'; // Not used in this version
+            const DATA_FILE_URL = './map_data.json'; // URL for the external JSON file
 
             const map = L.map('map', {
                 zoomControl: false
@@ -278,7 +265,6 @@
             const locationCounterEl = document.getElementById('locationCounter'); 
             const filterSidebarEl = document.getElementById('filter-sidebar');
             const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
-            // const mapContainerEl = document.getElementById('map-container'); // Not explicitly used, can be removed if not needed later
             
             let allPlacesData = []; 
             let totalParsedLocations = 0; 
@@ -434,84 +420,92 @@
                 return filterValues;
             }
 
-            function processAndDisplayEmbeddedData() { 
-                dataStatusMessageEl.textContent = 'Processing data...';
-                dataStatusMessageEl.style.color = '#8B949E'; 
-                
-                const dataScriptElement = document.getElementById('notionMapData');
-                let jsonData;
+            function processAndSetupFilters(jsonData) { // Renamed from processAndDisplayEmbeddedData
                 try {
-                    const rawJsonString = dataScriptElement.textContent.trim();
-                    // Check if the string is empty or just the placeholder '[]'
-                    if (!rawJsonString || rawJsonString === '[]') {
-                        console.warn("Embedded JSON data is empty or only contains placeholder '[]'.");
-                        displayError("No data found in the embedded script tag. Please paste your JSON data.");
-                        return;
+                    if (!Array.isArray(jsonData)) {
+                        displayError("Data error: Expected an array of objects from JSON file.");
+                        totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
                     }
-                    if (!rawJsonString.startsWith('[') || !rawJsonString.endsWith(']')) {
-                        throw new Error("Data in script tag does not appear to be a valid JSON array. Must start with [ and end with ].");
+                    allPlacesData = jsonData.map((item, index) => { 
+                        const itemName = item[config.nameProperty] || 'Unnamed Item';
+                        let rawLat = item[config.latProperty];
+                        let rawLon = item[config.lonProperty];
+                        let latString = rawLat !== null && rawLat !== undefined ? String(rawLat).replace(/^\uFEFF/, '').trim() : '';
+                        let lonString = rawLon !== null && rawLon !== undefined ? String(rawLon).replace(/^\uFEFF/, '').trim() : '';
+                        const latitude = parseFloat(latString);
+                        const longitude = parseFloat(lonString);
+
+                        if (isNaN(latitude) || isNaN(longitude)) {
+                            console.warn(`SKIPPING item ${index} ("${itemName}"): invalid coordinates. Original Lat: "${rawLat}", Original Lon: "${rawLon}", Parsed Lat: ${latitude}, Parsed Lon: ${longitude}`); 
+                            return null;
+                        }
+                        let photoUrl = item[config.photoProperty] || 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image';
+                        if (photoUrl && !photoUrl.startsWith('http') && !photoUrl.startsWith('//') && photoUrl !== 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image') {
+                           photoUrl = 'https://placehold.co/400x200/374151/E5E7EB?text=Invalid+URL';
+                        }
+                        return { 
+                            id: item[config.idProperty] || `json-item-${index}`,
+                            name: itemName, coords: [latitude, longitude], photoUrl: photoUrl,
+                            status: item[config.filterKeys.status], 
+                            allData: item 
+                        };
+                    }).filter(item => item !== null);
+
+                    totalParsedLocations = allPlacesData.length; 
+                    updateLocationCounter(allPlacesData.length, totalParsedLocations); 
+
+                    if (totalParsedLocations === 0 && jsonData.length > 0) {
+                         dataStatusMessageEl.textContent = 'No valid locations found in data file.';
+                         dataStatusMessageEl.style.color = '#DBAB0A'; 
+                    } else if (totalParsedLocations > 0) {
+                        dataStatusMessageEl.textContent = 'Data loaded successfully!';
+                        dataStatusMessageEl.style.color = '#3FB950'; 
+                    } else {
+                        dataStatusMessageEl.textContent = 'No data in file or file not found.';
+                         dataStatusMessageEl.style.color = '#8B949E';
                     }
-                    jsonData = JSON.parse(rawJsonString);
+
+                    const uniqueFilterValues = extractFilterValues(allPlacesData.map(p => p.allData)); 
+                    populateFilterDropdown(architectFilterEl, uniqueFilterValues.architect);
+                    populateFilterDropdown(styleFilterEl, uniqueFilterValues.style);
+                    populateFilterDropdown(statusFilterEl, uniqueFilterValues.status);
+                    populateFilterDropdown(cityRegionFilterEl, uniqueFilterValues.cityRegion);
+                    populateFilterDropdown(countryFilterEl, uniqueFilterValues.country);
+                    populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
+                    populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
+                    
+                    return allPlacesData; // Return the processed data
                 } catch (error) {
-                    console.error("Error parsing embedded JSON data:", error);
-                    displayError(`Invalid embedded JSON: ${error.message} Please ensure only a valid JSON array is pasted between the <script id="notionMapData"> tags.`);
-                    return;
+                    console.error("Error processing JSON data:", error);
+                    displayError(`Data processing error: ${error.message}`); 
+                    totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
                 }
+            }
+            
+            async function loadDataFromFile() {
+                dataStatusMessageEl.textContent = 'Loading map data...';
+                dataStatusMessageEl.style.color = '#8B949E';
+                totalParsedLocations = 0; 
+                updateLocationCounter(0,0); 
 
-                if (!Array.isArray(jsonData)) {
-                    displayError("Embedded data error: Expected an array after parsing.");
-                    totalParsedLocations = 0; updateLocationCounter(0, 0); return;
-                }
-
-                allPlacesData = jsonData.map((item, index) => { 
-                    const itemName = item[config.nameProperty] || 'Unnamed Item';
-                    let rawLat = item[config.latProperty];
-                    let rawLon = item[config.lonProperty];
-                    let latString = rawLat !== null && rawLat !== undefined ? String(rawLat).replace(/^\uFEFF/, '').trim() : '';
-                    let lonString = rawLon !== null && rawLon !== undefined ? String(rawLon).replace(/^\uFEFF/, '').trim() : '';
-                    const latitude = parseFloat(latString);
-                    const longitude = parseFloat(lonString);
-
-                    if (isNaN(latitude) || isNaN(longitude)) {
-                        console.warn(`SKIPPING item ${index} ("${itemName}"): invalid coordinates. Original Lat: "${rawLat}", Original Lon: "${rawLon}", Parsed Lat: ${latitude}, Parsed Lon: ${longitude}`); 
-                        return null;
+                try {
+                    const response = await fetch(DATA_FILE_URL); 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${DATA_FILE_URL}`);
                     }
-                    let photoUrl = item[config.photoProperty] || 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image';
-                    if (photoUrl && !photoUrl.startsWith('http') && !photoUrl.startsWith('//') && photoUrl !== 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image') {
-                       photoUrl = 'https://placehold.co/400x200/374151/E5E7EB?text=Invalid+URL';
+                    const jsonData = await response.json();
+                    const places = processAndSetupFilters(jsonData); // Process and setup filters
+                    if (places.length > 0) {
+                        displayFilteredPlaces(places); // Display all initially
+                    } else if (jsonData.length === 0) { // If file was empty
+                        dataStatusMessageEl.textContent = 'Map data file is empty.';
+                        dataStatusMessageEl.style.color = '#8B949E';
                     }
-                    return { 
-                        id: item[config.idProperty] || `json-item-${index}`,
-                        name: itemName, coords: [latitude, longitude], photoUrl: photoUrl,
-                        status: item[config.filterKeys.status], 
-                        allData: item 
-                    };
-                }).filter(item => item !== null);
-
-                totalParsedLocations = allPlacesData.length; 
-                updateLocationCounter(allPlacesData.length, totalParsedLocations); 
-
-                if (totalParsedLocations === 0 && jsonData.length > 0) {
-                     dataStatusMessageEl.textContent = 'No valid locations found in data.';
-                     dataStatusMessageEl.style.color = '#DBAB0A'; 
-                } else if (totalParsedLocations > 0) {
-                    dataStatusMessageEl.textContent = 'Data loaded.';
-                    dataStatusMessageEl.style.color = '#3FB950'; 
-                } else { // This case means jsonData itself was empty or became empty after filtering nulls
-                    dataStatusMessageEl.textContent = 'No data to display.';
-                     dataStatusMessageEl.style.color = '#8B949E';
+                    // Further status messages handled by processAndSetupFilters
+                } catch (error) {
+                    console.error('Fetch Data File Error:', error);
+                    displayError(`Failed to load map_data.json: ${error.message}`);
                 }
-
-                const uniqueFilterValues = extractFilterValues(allPlacesData.map(p => p.allData)); 
-                populateFilterDropdown(architectFilterEl, uniqueFilterValues.architect);
-                populateFilterDropdown(styleFilterEl, uniqueFilterValues.style);
-                populateFilterDropdown(statusFilterEl, uniqueFilterValues.status);
-                populateFilterDropdown(cityRegionFilterEl, uniqueFilterValues.cityRegion);
-                populateFilterDropdown(countryFilterEl, uniqueFilterValues.country);
-                populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
-                populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
-                
-                displayFilteredPlaces(allPlacesData); 
             }
             
             function displayFilteredPlaces(placesToDisplay) {
@@ -600,7 +594,8 @@
                 }, 310); 
             });
 
-            processAndDisplayEmbeddedData();
+            // Load data from external JSON file on initial page load
+            loadDataFromFile();
 
             window.addEventListener('resize', function() { map.invalidateSize(); });
         });
