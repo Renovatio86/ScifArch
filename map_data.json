@@ -1,0 +1,487 @@
+[
+    {
+        "Name": "Sanssouci Weinbergterrassen",
+        "Architect": {
+            "text": "Georg Wenzeslaus von Knobelsdorff",
+            "url": "https://www.notion.so/Georg-Wenzeslaus-von-Knobelsdorff-1b8d9fb4934180738308c57e836b8d7d?pvs=21"
+        },
+        "Year": "1745-1747",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Rococo"
+        ],
+        "Adress": "Potsdam, Germany",
+        "Status": "Built",
+        "City, Region": "Potsdam",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.3905689,
+        "Longitude": 13.0644729,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Tieranatomisches Theater",
+        "Architect": {
+            "text": "Carl Gotthard Langhans",
+            "url": "https://www.notion.so/Carl-Gotthard-Langhans-1bbd9fb493418083b2b6e0beb57053a5?pvs=21"
+        },
+        "Year": "1789",
+        "In the Media": [
+            {
+                "text": "Æon Flux",
+                "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+            },
+            {
+                "text": "The Hunger Games: The Ballad of Songbirds and Snakes",
+                "url": "https://www.notion.so/The-Hunger-Games-The-Ballad-of-Songbirds-and-Snakes-15ed9fb49341809bb081dccd87adaea0?pvs=21"
+            }
+        ],
+        "Style": [
+            "Neoclassic"
+        ],
+        "Adress": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.52000659999999,
+        "Longitude": 13.404954,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Großer Windkanal Berlin",
+        "Architect": "",
+        "Year": "1934",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Engineering"
+        ],
+        "Adress": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.52000659999999,
+        "Longitude": 13.404954,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Maria Regina Martyrum",
+        "Architect": [
+            {
+                "text": "Hans Schädel",
+                "url": "https://www.notion.so/Hans-Sch-del-1b8d9fb4934180d8b086ef59647fcc39?pvs=21"
+            },
+            {
+                "text": "Friedrich Ebert",
+                "url": "https://www.notion.so/Friedrich-Ebert-1b8d9fb49341801cac25f71da37af7f8?pvs=21"
+            }
+        ],
+        "Year": "1960-1963",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Modern"
+        ],
+        "Adress": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.52000659999999,
+        "Longitude": 13.404954,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Burroughs Wellcome Headquarters",
+        "Architect": {
+            "text": "Paul Rudolph",
+            "url": "https://www.notion.so/Paul-Rudolph-1f6d9fb49341805e88e6d790618a34ae?pvs=21"
+        },
+        "Year": "1969-1972, 1982-1986, 2021",
+        "In the Media": {
+            "text": "Brainstorm",
+            "url": "https://www.notion.so/Brainstorm-1f6d9fb4934180b5a4c3e94567233974?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Adress": "3030 East Cornwallis Road, Research Triangle Park, North Carolina, USA",
+        "Status": "Demolished",
+        "City, Region": "North Carolina",
+        "Country": "USA",
+        "Function": "Office",
+        "Latitude": 35.911971,
+        "Longitude": -78.869282,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "La Fabrica",
+        "Architect": {
+            "text": "Ricardo Bofill",
+            "url": "https://www.notion.so/Ricardo-Bofill-1b1d9fb4934180f3b4bcc4d23a340e6a?pvs=21"
+        },
+        "Year": "1973-1975",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Postmodern"
+        ],
+        "Adress": "Av. de la Indústria, 14, 08960 Sant Just Desvern, Barcelona, Spain",
+        "Status": "Renovated",
+        "City, Region": "Barcelona",
+        "Country": "Spain",
+        "Function": "Office, Residential",
+        "Latitude": 41.38123040000001,
+        "Longitude": 2.0683801,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Bank of America Plaza",
+        "Architect": {
+            "text": "AC Martin & Associates",
+            "url": "https://www.notion.so/AC-Martin-Associates-1dcd9fb4934180c3b435e7d273a3741a?pvs=21"
+        },
+        "Year": "1973-1975",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "International Style"
+        ],
+        "Adress": "301-333 South Hope, Los Angeles, CA, USA",
+        "Status": "",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Office",
+        "Latitude": 34.0535789,
+        "Longitude": -118.2524266,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Torre de Comunicaciones de Montjuïc",
+        "Architect": {
+            "text": "Santiago Calatrava",
+            "url": "https://www.notion.so/Santiago-Calatrava-1b4d9fb49341803d8e2df81648da27b8?pvs=21"
+        },
+        "Year": "1989-1992",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Organicist"
+        ],
+        "Adress": "Barcelona, Spain",
+        "Status": "",
+        "City, Region": "Barcelona",
+        "Country": "Spain",
+        "Function": "Communications",
+        "Latitude": 41.36417,
+        "Longitude": 2.15056,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Kapelle der Versöhnung",
+        "Architect": [
+            {
+                "text": "Rudolf Reitermann",
+                "url": "https://www.notion.so/Rudolf-Reitermann-1b7d9fb4934180d1b064ebb94a37e81c?pvs=21"
+            },
+            {
+                "text": "Peter Sassenroth",
+                "url": "https://www.notion.so/Peter-Sassenroth-1b7d9fb493418019acb3c6bb5c4adc0f?pvs=21"
+            }
+        ],
+        "Year": "2000",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [],
+        "Adress": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.52000659999999,
+        "Longitude": 13.404954,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Paul Löbe Haus",
+        "Architect": {
+            "text": "Stephan Braunfels",
+            "url": "https://www.notion.so/Stephan-Braunfels-1b8d9fb493418004beb4c026171b33fe?pvs=21"
+        },
+        "Year": "2001",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Postmodern"
+        ],
+        "Adress": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.52000659999999,
+        "Longitude": 13.404954,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Volkspark BUGA-Park",
+        "Architect": "",
+        "Year": "2001",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [],
+        "Adress": "Potsdam, Germany",
+        "Status": "Built",
+        "City, Region": "Potsdam",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.3905689,
+        "Longitude": 13.0644729,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Biosphäre Potsdam",
+        "Architect": {
+            "text": "Barkow Leibinger",
+            "url": "https://www.notion.so/Barkow-Leibinger-1b7d9fb493418007aca4dbf27c6bbe09?pvs=21"
+        },
+        "Year": "2001",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [],
+        "Adress": "Potsdam, Brandenburg, Germany",
+        "Status": "",
+        "City, Region": "Potsdam",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.3905689,
+        "Longitude": 13.0644729,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Crescent House",
+        "Architect": {
+            "text": "Wallace Cunningham",
+            "url": "https://www.notion.so/Wallace-Cunningham-1dbd9fb4934180fcaa85da7cf2870734?pvs=21"
+        },
+        "Year": "2003",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Adress": "532 Neptune Ave, Encinitas, California, USA",
+        "Status": "Built",
+        "City, Region": "Encinitas, California",
+        "Country": "USA",
+        "Function": "Residential",
+        "Latitude": 33.058349,
+        "Longitude": -117.301939,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Lasalle College of the Arts City Campus",
+        "Architect": {
+            "text": "RSP Architects",
+            "url": "https://www.notion.so/RSP-Architects-1dcd9fb49341805fba89fc54c32ff2c0?pvs=21"
+        },
+        "Year": "2007",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Adress": "1 McNally St, Singapore 187940",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Education",
+        "Latitude": 1.3029395,
+        "Longitude": 103.8515167,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Stadium Mass Rapid Transit (MRT) Station",
+        "Architect": {
+            "text": "WOHA",
+            "url": "https://www.notion.so/WOHA-1dbd9fb49341805eabfde6f8311ca4ef?pvs=21"
+        },
+        "Year": "2008",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Adress": "3 Stadium Walk, Singapore 397692",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Transportation",
+        "Latitude": 1.3027748,
+        "Longitude": 103.8753769,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "ION Orchard",
+        "Architect": [
+            {
+                "text": "Benoy",
+                "url": "https://www.notion.so/Benoy-1dcd9fb4934180418f99fc7ac0511145?pvs=21"
+            },
+            {
+                "text": "RSP Architects",
+                "url": "https://www.notion.so/RSP-Architects-1dcd9fb49341805fba89fc54c32ff2c0?pvs=21"
+            }
+        ],
+        "Year": "2009",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Adress": "2 Orchard Turn, Singapore 238801",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Retail",
+        "Latitude": 1.3040056,
+        "Longitude": 103.8319983,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "School of the Arts",
+        "Architect": {
+            "text": "WOHA",
+            "url": "https://www.notion.so/WOHA-1dbd9fb49341805eabfde6f8311ca4ef?pvs=21"
+        },
+        "Year": "2009",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Biophilic",
+            "Contemporary"
+        ],
+        "Adress": "1 Zubir Said Dr, Singapore 227968",
+        "Status": "",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Education",
+        "Latitude": 1.2992888,
+        "Longitude": 103.8487317,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Helix Bridge",
+        "Architect": [
+            {
+                "text": "COX Architecture",
+                "url": "https://www.notion.so/COX-Architecture-1dcd9fb493418077b68ef23c2719d2f2?pvs=21"
+            },
+            {
+                "text": "Architects 61",
+                "url": "https://www.notion.so/Architects-61-1dcd9fb493418078ab03f16e9d2aaabe?pvs=21"
+            }
+        ],
+        "Year": "2010",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [],
+        "Adress": "Helix Bridge, Singapore",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Bridge",
+        "Latitude": 1.2874774,
+        "Longitude": 103.8606326,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Metropolis Condos",
+        "Architect": [
+            {
+                "text": "Gensler",
+                "url": "https://www.notion.so/Gensler-1dcd9fb493418046b532ec3d8a0fa69d?pvs=21"
+            },
+            {
+                "text": "HED",
+                "url": "https://www.notion.so/HED-1dcd9fb4934180b0b91ef9e53c771dc1?pvs=21"
+            }
+        ],
+        "Year": "2014-2018",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Adress": "877 Francisco St, Los Angeles, CA 90017, United States",
+        "Status": "Built",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Residential, Retail",
+        "Latitude": 34.04845530000001,
+        "Longitude": -118.2634744,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Marina One",
+        "Architect": {
+            "text": "Ingenhoven Architects",
+            "url": "https://www.notion.so/Ingenhoven-Architects-1dcd9fb4934180f7bbb6ea30491a7091?pvs=21"
+        },
+        "Year": "2017",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Organicist"
+        ],
+        "Adress": "9 Park St, Singapore 068803",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Residential",
+        "Latitude": 1.2773089,
+        "Longitude": 103.8530138,
+        "Relevant?": "Yes"
+    }
+]

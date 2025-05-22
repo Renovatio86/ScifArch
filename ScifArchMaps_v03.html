@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark OSM Navigator (from JSON file)</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; display: flex; height: 100vh;
+            overflow: hidden; background-color: #111827; color: #f3f4f6;
+        }
+        #filter-sidebar {
+            width: 260px; background-color: #1f2937; padding: 16px; overflow-y: auto;
+            display: flex; flex-direction: column; border-right: 1px solid #374151;
+        }
+        #filter-sidebar h2 {
+            font-size: 1.125rem; font-weight: 600; margin-bottom: 12px;
+            color: #e5e7eb; border-bottom: 1px solid #4b5563; padding-bottom: 6px;
+        }
+        .filter-group { margin-bottom: 12px; }
+        .filter-group label {
+            display: block; margin-bottom: 4px; font-size: 0.75rem;
+            font-weight: 500; color: #9ca3af;
+        }
+        .filter-group select {
+            width: 100%; padding: 6px 8px; background-color: #374151;
+            color: #e5e7eb; border: 1px solid #4b5563; border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .filter-group select:focus {
+            outline: none; border-color: #4f46e5; box-shadow: 0 0 0 2px #4f46e560;
+        }
+        #locationCounter {
+            font-size: 0.75rem; color: #9ca3af; margin-top: 8px;
+            margin-bottom: 8px; text-align: center;
+        }
+        .controls-area { 
+            padding-bottom: 10px; margin-bottom:10px;
+            border-bottom: 1px solid #4b5563;
+        }
+        #data-status-message { /* Status message for data loading */
+            padding: 10px 0px; color: #9ca3af; font-size: 0.875rem; text-align: center;
+        }
+
+        .filter-buttons {
+            margin-top: auto; padding-top: 12px; border-top: 1px solid #4b5563;
+        }
+        .filter-buttons button {
+            width: 100%; padding: 8px; border-radius: 4px; font-size: 0.875rem;
+            font-weight: 500; cursor: pointer; transition: background-color 0.2s ease-in-out;
+            border: none;
+        }
+        #applyFiltersBtn {
+            background-color: #4f46e5; color: white; margin-bottom: 6px;
+        }
+        #applyFiltersBtn:hover { background-color: #4338ca; }
+        #clearFiltersBtn {
+            background-color: #4b5563; color: #e5e7eb;
+        }
+        #clearFiltersBtn:hover { background-color: #6b7280; }
+
+        #map-container { flex-grow: 1; position: relative; }
+        #map { height: 100%; width: 100%; background-color: #1a1a1a; }
+
+        .leaflet-popup-content-wrapper {
+            background: #1f2937; color: #f3f4f6; border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); max-height: 380px; overflow-y: auto; 
+        }
+        .leaflet-popup-content { 
+            margin: 12px 16px; font-size: 0.875rem; line-height: 1.5; 
+        }
+        .leaflet-popup-tip-container { display: none; }
+        .leaflet-popup-close-button { color: #d1d5db !important; padding: 8px 8px 0 0 !important; z-index: 100; }
+        .leaflet-popup-close-button:hover { color: #f9fafb !important; background: transparent !important; }
+
+        .popup-image {
+            max-width: 100%; height: auto; max-height: 120px; object-fit: cover;
+            border-radius: 6px; margin-bottom: 10px; border: 1px solid #374151;
+            display: block; margin-left: auto; margin-right: auto;
+        }
+        .popup-main-title {
+            font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; 
+            color: #e5e7eb; border-bottom: 1px solid #374151; padding-bottom: 6px; 
+        }
+        .popup-details-grid {
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 4px 8px; font-size: 0.75rem; 
+        }
+        .popup-detail-item strong { color: #9ca3af; font-weight: 500; }
+        .popup-detail-item span { color: #d1d5db; word-break: break-word; }
+        .popup-detail-item span a, .popup-detail-item span .link-list a {
+            color: #818cf8; text-decoration: underline; text-decoration-color: #6366f1;
+        }
+        .popup-detail-item span a:hover, .popup-detail-item span .link-list a:hover {
+            color: #a5b4fc; text-decoration-color: #818cf8;
+        }
+        .link-list-item:not(:last-child)::after { content: ", "; white-space: pre; }
+        
+        .custom-marker-icon { 
+            border-radius: 50%; width: 12px !important; height: 12px !important;
+            border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="filter-sidebar">
+        <div class="controls-area">
+            <div id="data-status-message">Loading map data...</div>
+            <div id="locationCounter">Showing 0 of 0 locations</div> 
+        </div>
+        <h2>Filters</h2>
+        <div class="filter-group">
+            <label for="architectFilter">Architect:</label>
+            <select id="architectFilter"><option value="All">All Architects</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="inTheMediaFilter">In the Media:</label>
+            <select id="inTheMediaFilter"><option value="All">All Media</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="styleFilter">Style:</label>
+            <select id="styleFilter"><option value="All">All Styles</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter"><option value="All">All Statuses</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="cityRegionFilter">City/Region:</label>
+            <select id="cityRegionFilter"><option value="All">All Cities/Regions</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="countryFilter">Country:</label>
+            <select id="countryFilter"><option value="All">All Countries</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="functionFilter">Function:</label>
+            <select id="functionFilter"><option value="All">All Functions</option></select>
+        </div>
+        <div class="filter-buttons">
+            <button id="applyFiltersBtn">Apply Filters</button>
+            <button id="clearFiltersBtn">Clear Filters</button>
+        </div>
+    </div>
+
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const DATA_FILE_URL = './map_data.json'; // Assumes map_data.json is in the same directory
+
+            const map = L.map('map', {
+                zoomControl: false
+            }).setView([20.0, 0.0], 2);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd', maxZoom: 20, minZoom: 2
+            }).addTo(map);
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+            
+            const dataStatusMessageEl = document.getElementById('data-status-message');
+            const locationCounterEl = document.getElementById('locationCounter'); 
+            
+            let allPlacesData = []; 
+            let totalParsedLocations = 0; 
+            
+            const statusColors = {
+                'Built': '#4ade80', 'Demolished': '#f87171', 'Renovated': '#60a5fa',
+                'Under Construction': '#facc15', 'Proposed': '#c084fc', 'default': '#9ca3af'
+            };
+
+            let markersLayer = L.markerClusterGroup({ 
+                spiderfyOnMaxZoom: true, 
+                showCoverageOnHover: false, 
+                zoomToBoundsOnClick: true, 
+                iconCreateFunction: function(cluster) {
+                    var childCount = cluster.getChildCount();
+                    var firstChild = cluster.getAllChildMarkers()[0];
+                    var statusOfFirst = (firstChild && firstChild.options && firstChild.options.status) ? firstChild.options.status : 'default';
+                    var bgColor = statusColors[statusOfFirst] || statusColors['default'];
+                    var diameter = childCount < 10 ? 28 : (childCount < 100 ? 38 : 48);
+                    return L.divIcon({
+                        html: `<div style="background-color: ${bgColor}; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; font-weight: bold; font-size: ${diameter / 2.8}px;">${childCount}</div>`,
+                        className: '', 
+                        iconSize: L.point(diameter, diameter)
+                    });
+                }
+            });
+            map.addLayer(markersLayer);
+
+            const architectFilterEl = document.getElementById('architectFilter');
+            const styleFilterEl = document.getElementById('styleFilter');
+            const statusFilterEl = document.getElementById('statusFilter');
+            const cityRegionFilterEl = document.getElementById('cityRegionFilter');
+            const countryFilterEl = document.getElementById('countryFilter');
+            const functionFilterEl = document.getElementById('functionFilter');
+            const inTheMediaFilterEl = document.getElementById('inTheMediaFilter'); 
+            const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+            const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
+            const config = {
+                nameProperty: 'Name', latProperty: 'Latitude', lonProperty: 'Longitude',
+                photoProperty: 'Photo_URL', idProperty: 'ID',
+                filterKeys: {
+                    architect: 'Architect', style: 'Style', status: 'Status',
+                    cityRegion: 'City, Region', country: 'Country', function: 'Function',
+                    inTheMedia: 'In the Media' 
+                }
+            };
+            
+            function getMarkerIcon(status) {
+                const color = statusColors[status] || statusColors['default'];
+                return L.divIcon({
+                    className: 'custom-marker-icon', 
+                    html: `<span style="background-color:${color}; display:block; width:100%; height:100%; border-radius:50%;"></span>`,
+                    iconSize: [12, 12], iconAnchor: [8, 8] 
+                });
+            }
+            
+            function updateLocationCounter(visibleCount, totalCount) {
+                locationCounterEl.textContent = `Showing ${visibleCount} of ${totalCount} locations`;
+            }
+
+            function clearAllMapLayers() { 
+                markersLayer.clearLayers(); 
+            }
+
+            function displayError(message) { 
+                console.error(message); 
+                dataStatusMessageEl.textContent = `Error: ${message}`;
+                dataStatusMessageEl.style.color = '#f87171'; // Red for error
+                updateLocationCounter(0, 0); 
+            }
+            
+            function sanitizeHTML(text) {
+                if (typeof text !== 'string') return String(text); 
+                return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            function renderSinglePlacePopupContent(place) {
+                let detailsHtml = '';
+                for (const key in place.allData) {
+                    if (place.allData.hasOwnProperty(key) &&
+                        key !== config.nameProperty && key !== config.latProperty &&
+                        key !== config.lonProperty && key !== config.photoProperty && key !== config.idProperty) {
+                        const rawValue = place.allData[key];
+                        if (rawValue !== null && rawValue !== undefined && String(rawValue).trim() !== "") {
+                            const formattedValue = renderFieldValue(rawValue);
+                            detailsHtml += `<strong class="popup-detail-item">${sanitizeHTML(key)}:</strong><span class="popup-detail-item">${formattedValue}</span>`;
+                        }
+                    }
+                }
+                return `
+                    <img src="${place.photoUrl}" alt="Photo of ${sanitizeHTML(place.name)}" class="popup-image" onerror="this.onerror=null; this.src='https://placehold.co/400x200/4B5563/E5E7EB?text=Image+Error';">
+                    <h3 class="popup-main-title">${sanitizeHTML(place.name)}</h3>
+                    <div class="popup-details-grid">${detailsHtml}</div>
+                `;
+            }
+            
+            function renderFieldValue(value) {
+                if (value === null || value === undefined) return '';
+                if (Array.isArray(value)) {
+                    const linksHtml = value.map(item => {
+                        if (typeof item === 'object' && item !== null && item.text && item.url) {
+                            return `<span class="link-list-item"><a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${sanitizeHTML(item.text)}</a></span>`;
+                        }
+                        return `<span class="link-list-item">${sanitizeHTML(String(item))}</span>`;
+                    }).join('');
+                    return `<span class="link-list">${linksHtml}</span>`;
+                } else if (typeof value === 'object' && value.text && value.url) {
+                    return `<a href="${sanitizeHTML(value.url)}" target="_blank" rel="noopener noreferrer">${sanitizeHTML(value.text)}</a>`;
+                }
+                return sanitizeHTML(String(value));
+            }
+
+            function populateFilterDropdown(selectElement, values) {
+                while (selectElement.options.length > 1) { selectElement.remove(1); }
+                const sortedValues = Array.from(values).sort((a, b) => String(a).localeCompare(String(b)));
+                sortedValues.forEach(value => {
+                    if (value !== null && value !== undefined && String(value).trim() !== '') {
+                        const option = document.createElement('option');
+                        option.value = value; option.textContent = value;
+                        selectElement.appendChild(option);
+                    }
+                });
+            }
+            
+            function extractFilterValues(data) {
+                const filterValues = {
+                    architect: new Set(), style: new Set(), status: new Set(),
+                    cityRegion: new Set(), country: new Set(), function: new Set(),
+                    inTheMedia: new Set() 
+                };
+                data.forEach(item => {
+                    for (const key in config.filterKeys) {
+                        const dataKey = config.filterKeys[key];
+                        let value = item[dataKey];
+                        if (value !== null && value !== undefined) {
+                            if (Array.isArray(value)) { 
+                                value.forEach(subItem => {
+                                    if (typeof subItem === 'object' && subItem.text) {
+                                        filterValues[key].add(subItem.text.trim());
+                                    } else if (typeof subItem === 'string') {
+                                        filterValues[key].add(subItem.trim());
+                                    }
+                                });
+                            } else if (typeof value === 'object' && value.text) { 
+                                filterValues[key].add(value.text.trim());
+                            } else if (typeof value === 'string') {
+                                filterValues[key].add(value.trim());
+                            }
+                        }
+                    }
+                });
+                return filterValues;
+            }
+
+            function processAndSetupFilters(jsonData) { 
+                try {
+                    if (!Array.isArray(jsonData)) {
+                        displayError("Data error: Expected an array of objects from JSON file.");
+                        totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
+                    }
+                    allPlacesData = jsonData.map((item, index) => { 
+                        const itemName = item[config.nameProperty] || 'Unnamed Item';
+                        let rawLat = item[config.latProperty];
+                        let rawLon = item[config.lonProperty];
+                        let latString = rawLat !== null && rawLat !== undefined ? String(rawLat).replace(/^\uFEFF/, '').trim() : '';
+                        let lonString = rawLon !== null && rawLon !== undefined ? String(rawLon).replace(/^\uFEFF/, '').trim() : '';
+                        const latitude = parseFloat(latString);
+                        const longitude = parseFloat(lonString);
+
+                        if (isNaN(latitude) || isNaN(longitude)) {
+                            console.warn(`SKIPPING item ${index} ("${itemName}"): invalid coordinates. Original Lat: "${rawLat}", Original Lon: "${rawLon}", Parsed Lat: ${latitude}, Parsed Lon: ${longitude}`); 
+                            return null;
+                        }
+                        let photoUrl = item[config.photoProperty] || 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image';
+                        if (photoUrl && !photoUrl.startsWith('http') && !photoUrl.startsWith('//') && photoUrl !== 'https://placehold.co/400x200/374151/E5E7EB?text=No+Image') {
+                           photoUrl = 'https://placehold.co/400x200/374151/E5E7EB?text=Invalid+URL';
+                        }
+                        return { 
+                            id: item[config.idProperty] || `json-item-${index}`,
+                            name: itemName, coords: [latitude, longitude], photoUrl: photoUrl,
+                            status: item[config.filterKeys.status], 
+                            allData: item 
+                        };
+                    }).filter(item => item !== null);
+
+                    totalParsedLocations = allPlacesData.length; 
+                    updateLocationCounter(allPlacesData.length, totalParsedLocations); 
+
+                    if (totalParsedLocations > 0) {
+                        dataStatusMessageEl.textContent = 'Data loaded successfully!';
+                        dataStatusMessageEl.style.color = '#4ade80'; // Green for success
+                    } else if (jsonData.length > 0 && totalParsedLocations === 0) {
+                        dataStatusMessageEl.textContent = 'No valid locations in data.';
+                        dataStatusMessageEl.style.color = '#facc15'; // Yellow for warning
+                    } else {
+                        dataStatusMessageEl.textContent = 'No data loaded.';
+                        dataStatusMessageEl.style.color = '#9ca3af';
+                    }
+
+                    const uniqueFilterValues = extractFilterValues(allPlacesData.map(p => p.allData)); 
+                    populateFilterDropdown(architectFilterEl, uniqueFilterValues.architect);
+                    populateFilterDropdown(styleFilterEl, uniqueFilterValues.style);
+                    populateFilterDropdown(statusFilterEl, uniqueFilterValues.status);
+                    populateFilterDropdown(cityRegionFilterEl, uniqueFilterValues.cityRegion);
+                    populateFilterDropdown(countryFilterEl, uniqueFilterValues.country);
+                    populateFilterDropdown(functionFilterEl, uniqueFilterValues.function);
+                    populateFilterDropdown(inTheMediaFilterEl, uniqueFilterValues.inTheMedia); 
+                    
+                    console.log(`Total items processed and kept: ${totalParsedLocations}`);
+                    return allPlacesData; 
+                } catch (error) {
+                    console.error("Error processing JSON data:", error);
+                    displayError(`Data processing error: ${error.message}`); 
+                    totalParsedLocations = 0; updateLocationCounter(0, 0); return [];
+                }
+            }
+            
+            function displayFilteredPlaces(placesToDisplay) {
+                clearAllMapLayers(); 
+                updateLocationCounter(placesToDisplay.length, totalParsedLocations);
+
+                const newMarkers = [];
+                placesToDisplay.forEach(place => {
+                    if (!place.allData) {
+                        console.warn("Place object missing 'allData':", place);
+                        const originalPlace = allPlacesData.find(p => (p.id && p.id === place.id) || (p.name === place.name && p.coords.join(',') === place.coords.join(',')));
+                        place.allData = originalPlace ? originalPlace.allData : { Name: place.name }; 
+                    }
+                    const marker = L.marker(place.coords, { 
+                        icon: getMarkerIcon(place.status),
+                        status: place.status 
+                    });
+                    marker.bindPopup(renderSinglePlacePopupContent(place));
+                    newMarkers.push(marker);
+                });
+                
+                markersLayer.addLayers(newMarkers); 
+
+                if (newMarkers.length > 0) {
+                     map.fitBounds(markersLayer.getBounds().pad(0.1));
+                } else if (totalParsedLocations > 0) {
+                    map.setView([20.0, 0.0], 2); 
+                } else { 
+                    map.setView([20.0, 0.0], 2);
+                }
+            }
+            
+            async function loadDataFromFile() {
+                dataStatusMessageEl.textContent = 'Loading data from file...';
+                dataStatusMessageEl.style.color = '#e5e7eb';
+                totalParsedLocations = 0; 
+                updateLocationCounter(0,0); 
+
+                try {
+                    const response = await fetch(DATA_FILE_URL); 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${DATA_FILE_URL}`);
+                    }
+                    const jsonData = await response.json();
+                    const places = processAndSetupFilters(jsonData); 
+                    if (places.length > 0) {
+                        displayFilteredPlaces(places);
+                    } else if (jsonData.length === 0) {
+                        dataStatusMessageEl.textContent = 'Data file is empty.';
+                        dataStatusMessageEl.style.color = '#9ca3af';
+                    }
+                    // Error/success message is handled within processAndSetupFilters
+                } catch (error) {
+                    console.error('Fetch Data File Error:', error);
+                    displayError(`Failed to load data from file: ${error.message}`);
+                }
+            }
+
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            clearFiltersBtn.addEventListener('click', clearAllFilters);
+
+            // Load data on initial page load
+            loadDataFromFile(); 
+
+            window.addEventListener('resize', function() { map.invalidateSize(); });
+            updateLocationCounter(0,0); 
+            
+            function applyFilters() {
+                const selectedArchitect = architectFilterEl.value;
+                const selectedStyle = styleFilterEl.value;
+                const selectedStatus = statusFilterEl.value;
+                const selectedCityRegion = cityRegionFilterEl.value;
+                const selectedCountry = countryFilterEl.value;
+                const selectedFunction = functionFilterEl.value;
+                const selectedInTheMedia = inTheMediaFilterEl.value; 
+
+                const filteredPlaces = allPlacesData.filter(place => {
+                    const itemData = place.allData; 
+                    const matchArchitect = selectedArchitect === 'All' || 
+                        (Array.isArray(itemData[config.filterKeys.architect]) ? 
+                            itemData[config.filterKeys.architect].some(a => typeof a === 'object' ? a.text === selectedArchitect : a === selectedArchitect) :
+                            (typeof itemData[config.filterKeys.architect] === 'object' ? itemData[config.filterKeys.architect].text === selectedArchitect : itemData[config.filterKeys.architect] === selectedArchitect)
+                        );
+                    
+                    const itemStyle = itemData[config.filterKeys.style];
+                    const matchStyle = selectedStyle === 'All' || 
+                        (Array.isArray(itemStyle) ? 
+                            itemStyle.some(s => s === selectedStyle) : 
+                            itemStyle === selectedStyle
+                        );
+
+                    const matchStatus = selectedStatus === 'All' || itemData[config.filterKeys.status] === selectedStatus;
+                    const matchCityRegion = selectedCityRegion === 'All' || itemData[config.filterKeys.cityRegion] === selectedCityRegion;
+                    const matchCountry = selectedCountry === 'All' || itemData[config.filterKeys.country] === selectedCountry;
+                    const matchFunction = selectedFunction === 'All' || itemData[config.filterKeys.function] === selectedFunction;
+                    const matchInTheMedia = selectedInTheMedia === 'All' ||
+                        (Array.isArray(itemData[config.filterKeys.inTheMedia]) ?
+                            itemData[config.filterKeys.inTheMedia].some(m => typeof m === 'object' ? m.text === selectedInTheMedia : m === selectedInTheMedia) :
+                            (typeof itemData[config.filterKeys.inTheMedia] === 'object' ? itemData[config.filterKeys.inTheMedia].text === selectedInTheMedia : itemData[config.filterKeys.inTheMedia] === selectedInTheMedia)
+                        );
+                    return matchArchitect && matchStyle && matchStatus && matchCityRegion && matchCountry && matchFunction && matchInTheMedia;
+                });
+                displayFilteredPlaces(filteredPlaces); 
+            }
+
+            function clearAllFilters() {
+                architectFilterEl.value = 'All'; styleFilterEl.value = 'All';
+                statusFilterEl.value = 'All'; cityRegionFilterEl.value = 'All';
+                countryFilterEl.value = 'All'; functionFilterEl.value = 'All';
+                inTheMediaFilterEl.value = 'All'; 
+                displayFilteredPlaces(allPlacesData); 
+            }
+        });
+    </script>
+</body>
+</html>
