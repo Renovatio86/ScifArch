@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist OSM Navigator (from JSON file)</title>
+    <title>Minimalist OSM Navigator (Embedded JSON)</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -197,10 +197,16 @@
 
     </style>
 
+    <!-- 
+        IMPORTANT DATA PLACEMENT:
+        1. Generate your JSON data array using the Python script.
+        2. Copy the ENTIRE JSON array (it should start with '[' and end with ']').
+        3. !!! CRITICAL: Delete EVERYTHING between the <script> tags below, including this comment block AND the placeholder [].
+        4. Paste your copied JSON data array directly. Ensure no extra characters or comments are inside the pasted JSON.
+           The content between <script ...> and </script> should ONLY be your valid JSON array.
+    -->
     <script id="notionMapData" type="application/json">
-    [
-        // PASTE YOUR JSON DATA ARRAY HERE
-    ]
+    []
     </script>
 
 </head>
@@ -247,7 +253,8 @@
     </div>
 
     <div id="map-container">
-        <button id="toggleSidebarBtn">☰</button> <div id="map"></div>
+        <button id="toggleSidebarBtn">☰</button> 
+        <div id="map"></div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
@@ -255,7 +262,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const DATA_FILE_URL = './map_data.json'; 
+            // const DATA_FILE_URL = './map_data.json'; // Not used in this version
 
             const map = L.map('map', {
                 zoomControl: false
@@ -271,13 +278,13 @@
             const locationCounterEl = document.getElementById('locationCounter'); 
             const filterSidebarEl = document.getElementById('filter-sidebar');
             const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
-            const mapContainerEl = document.getElementById('map-container');
+            // const mapContainerEl = document.getElementById('map-container'); // Not explicitly used, can be removed if not needed later
             
             let allPlacesData = []; 
             let totalParsedLocations = 0; 
             
             const statusColors = {
-                'Built': '#3FB950', 'Demolished': '#F85149', 'Renovated': '#58A6FF', // GitHub-like colors
+                'Built': '#3FB950', 'Demolished': '#F85149', 'Renovated': '#58A6FF', 
                 'Under Construction': '#DBAB0A', 'Proposed': '#A371F7', 'default': '#8B949E'
             };
 
@@ -290,7 +297,7 @@
                     var firstChild = cluster.getAllChildMarkers()[0];
                     var statusOfFirst = (firstChild && firstChild.options && firstChild.options.status) ? firstChild.options.status : 'default';
                     var bgColor = statusColors[statusOfFirst] || statusColors['default'];
-                    var diameter = childCount < 10 ? 24 : (childCount < 100 ? 32 : 40); // Smaller cluster icons
+                    var diameter = childCount < 10 ? 24 : (childCount < 100 ? 32 : 40); 
                     return L.divIcon({
                         html: `<div style="background-color: ${bgColor}; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; font-weight: 500; font-size: ${diameter / 3}px;">${childCount}</div>`,
                         className: '', 
@@ -325,7 +332,7 @@
                 return L.divIcon({
                     className: 'custom-marker-icon', 
                     html: `<span style="background-color:${color}; display:block; width:100%; height:100%; border-radius:50%;"></span>`,
-                    iconSize: [10, 10], iconAnchor: [6, 6] // Adjusted for smaller icon
+                    iconSize: [10, 10], iconAnchor: [6, 6] 
                 });
             }
             
@@ -338,9 +345,9 @@
             }
 
             function displayError(message) { 
-                console.error(message); 
+                console.error("Display Error:", message); 
                 dataStatusMessageEl.textContent = `Error: ${message}`;
-                dataStatusMessageEl.style.color = '#F85149'; // GitHub dark error red
+                dataStatusMessageEl.style.color = '#F85149'; 
                 updateLocationCounter(0, 0); 
             }
             
@@ -435,18 +442,24 @@
                 let jsonData;
                 try {
                     const rawJsonString = dataScriptElement.textContent.trim();
+                    // Check if the string is empty or just the placeholder '[]'
+                    if (!rawJsonString || rawJsonString === '[]') {
+                        console.warn("Embedded JSON data is empty or only contains placeholder '[]'.");
+                        displayError("No data found in the embedded script tag. Please paste your JSON data.");
+                        return;
+                    }
                     if (!rawJsonString.startsWith('[') || !rawJsonString.endsWith(']')) {
-                        throw new Error("Embedded data format error.");
+                        throw new Error("Data in script tag does not appear to be a valid JSON array. Must start with [ and end with ].");
                     }
                     jsonData = JSON.parse(rawJsonString);
                 } catch (error) {
                     console.error("Error parsing embedded JSON data:", error);
-                    displayError(`Invalid embedded JSON. Please check data.`);
+                    displayError(`Invalid embedded JSON: ${error.message} Please ensure only a valid JSON array is pasted between the <script id="notionMapData"> tags.`);
                     return;
                 }
 
                 if (!Array.isArray(jsonData)) {
-                    displayError("Embedded data error: Expected an array.");
+                    displayError("Embedded data error: Expected an array after parsing.");
                     totalParsedLocations = 0; updateLocationCounter(0, 0); return;
                 }
 
@@ -479,13 +492,13 @@
                 updateLocationCounter(allPlacesData.length, totalParsedLocations); 
 
                 if (totalParsedLocations === 0 && jsonData.length > 0) {
-                     dataStatusMessageEl.textContent = 'No valid locations found.';
+                     dataStatusMessageEl.textContent = 'No valid locations found in data.';
                      dataStatusMessageEl.style.color = '#DBAB0A'; 
                 } else if (totalParsedLocations > 0) {
                     dataStatusMessageEl.textContent = 'Data loaded.';
                     dataStatusMessageEl.style.color = '#3FB950'; 
-                } else {
-                    dataStatusMessageEl.textContent = 'No data embedded.';
+                } else { // This case means jsonData itself was empty or became empty after filtering nulls
+                    dataStatusMessageEl.textContent = 'No data to display.';
                      dataStatusMessageEl.style.color = '#8B949E';
                 }
 
@@ -582,12 +595,10 @@
             
             toggleSidebarBtn.addEventListener('click', function() {
                 filterSidebarEl.classList.toggle('hidden');
-                // Invalidate map size after a short delay to allow CSS transition
                 setTimeout(function() {
                     map.invalidateSize();
-                }, 310); // Slightly longer than the CSS transition
+                }, 310); 
             });
-
 
             processAndDisplayEmbeddedData();
 
