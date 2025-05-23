@@ -13,13 +13,13 @@
         "Style": [
             "Rococo"
         ],
-        "Adress": "Potsdam, Germany",
+        "Address ": "Potsdam, Germany",
         "Status": "Built",
         "City, Region": "Potsdam",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.3905689,
-        "Longitude": 13.0644729,
+        "Latitude": 52.403014,
+        "Longitude": 13.037353,
         "Relevant?": "No"
     },
     {
@@ -42,14 +42,84 @@
         "Style": [
             "Neoclassic"
         ],
-        "Adress": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.52000659999999,
-        "Longitude": 13.404954,
+        "Latitude": 52.525195,
+        "Longitude": 13.381048,
         "Relevant?": "No"
+    },
+    {
+        "Name": "Millard House",
+        "Architect": {
+            "text": "Frank Lloyd Wright",
+            "url": "https://www.notion.so/Frank-Lloyd-Wright-15dd9fb49341800ab70ee13c91733a40?pvs=21"
+        },
+        "Year": "1923",
+        "In the Media": [
+            {
+                "text": "Westworld (2016)",
+                "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+            },
+            {
+                "text": "Game of Thrones",
+                "url": "https://www.notion.so/Game-of-Thrones-1dbd9fb493418015ab49d2679b5d13fa?pvs=21"
+            }
+        ],
+        "Style": [
+            "Prairie"
+        ],
+        "Address ": "Pasadena, LA, California, USA",
+        "Status": "Built",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Residential",
+        "Latitude": 34.1554,
+        "Longitude": -118.162,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Tempelhof Airport",
+        "Architect": "",
+        "Year": "1923",
+        "In the Media": {
+            "text": "The Hunger Games: Mookingjay - Part 2",
+            "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Tempelhof, Berlin",
+        "Status": "Abandoned",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.4761,
+        "Longitude": 13.3981,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Ennis House",
+        "Architect": {
+            "text": "Frank Lloyd Wright",
+            "url": "https://www.notion.so/Frank-Lloyd-Wright-15dd9fb49341800ab70ee13c91733a40?pvs=21"
+        },
+        "Year": "1924",
+        "In the Media": {
+            "text": "Blade Runner",
+            "url": "https://www.notion.so/Blade-Runner-5c9d9fb4934183ab89ad817c704faa5b?pvs=21"
+        },
+        "Style": [
+            "Prairie"
+        ],
+        "Address ": "LA, California, USA",
+        "Status": "Built",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Residential",
+        "Latitude": 34.1162,
+        "Longitude": -118.293,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Großer Windkanal Berlin",
@@ -62,13 +132,63 @@
         "Style": [
             "Engineering"
         ],
-        "Adress": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.52000659999999,
-        "Longitude": 13.404954,
+        "Latitude": 52.43158,
+        "Longitude": 13.53,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Marin County Civic Center",
+        "Architect": {
+            "text": "Frank Lloyd Wright",
+            "url": "https://www.notion.so/Frank-Lloyd-Wright-15dd9fb49341800ab70ee13c91733a40?pvs=21"
+        },
+        "Year": "1957",
+        "In the Media": [
+            {
+                "text": "THX 1138",
+                "url": "https://www.notion.so/THX-1138-e0ed9fb4934182579eb88110e99bbcdf?pvs=21"
+            },
+            {
+                "text": "Gattaca",
+                "url": "https://www.notion.so/Gattaca-09fd9fb4934183dfb496011c3a382099?pvs=21"
+            }
+        ],
+        "Style": [
+            "Prairie"
+        ],
+        "Address ": "3501 Civic Center Dr, San Rafael, CA 94903, USA",
+        "Status": "Built",
+        "City, Region": "California, San Rafael",
+        "Country": "USA",
+        "Function": "Cultural",
+        "Latitude": 37.9997,
+        "Longitude": -122.53,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Haus der Kulturen der Welt",
+        "Architect": {
+            "text": "Hugh Stubbins",
+            "url": "https://www.notion.so/Hugh-Stubbins-1b7d9fb493418060a17aeaa043d82d18?pvs=21"
+        },
+        "Year": "1957, 1987",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [],
+        "Address ": "John-Foster-Dulles-Allee 10, 10557 Berlin, Germany",
+        "Status": "Renovated",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "Cultural",
+        "Latitude": 52.5178,
+        "Longitude": 13.3656,
         "Relevant?": "No"
     },
     {
@@ -91,14 +211,274 @@
         "Style": [
             "Modern"
         ],
-        "Adress": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.52000659999999,
-        "Longitude": 13.404954,
+        "Latitude": 52.5403,
+        "Longitude": 13.2986,
         "Relevant?": "No"
+    },
+    {
+        "Name": "New House",
+        "Architect": {
+            "text": "Stout & Litchfield",
+            "url": "https://www.notion.so/Stout-Litchfield-1f6d9fb4934180e99d65fb56ceea8cee?pvs=21"
+        },
+        "Year": "1963-1964",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [
+            "Modern"
+        ],
+        "Address ": "Church street, Shipton-Under-Wychwood, Oxfordshire, UK",
+        "Status": "Built",
+        "City, Region": "London, Oxford",
+        "Country": "UK",
+        "Function": "Residential",
+        "Latitude": 51.8566,
+        "Longitude": -1.5956,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Torres Blancas",
+        "Architect": {
+            "text": "Sáenz de Oiza",
+            "url": "https://www.notion.so/S-enz-de-Oiza-1b1d9fb4934180378697e09f95a859b1?pvs=21"
+        },
+        "Year": "1964-1969",
+        "In the Media": {
+            "text": "Some Time Later",
+            "url": "https://www.notion.so/Some-Time-Later-60fd9fb493418306a34881d3c7486331?pvs=21"
+        },
+        "Style": [
+            "Brutalism",
+            "Organicist"
+        ],
+        "Address ": "Madrid",
+        "Status": "Built",
+        "City, Region": "Madrid",
+        "Country": "Spain",
+        "Function": "",
+        "Latitude": 40.4397,
+        "Longitude": -3.672,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Bauhaus-Archiv",
+        "Architect": [
+            {
+                "text": "Walter Gropius",
+                "url": "https://www.notion.so/Walter-Gropius-1b7d9fb493418037b0b9c2a2cc0f64bd?pvs=21"
+            },
+            {
+                "text": "Alex Cvijanović",
+                "url": "https://www.notion.so/Alex-Cvijanovi-1b7d9fb49341803c9594efbace8ff33f?pvs=21"
+            },
+            {
+                "text": "Hans Bande",
+                "url": "https://www.notion.so/Hans-Bande-1b7d9fb49341805ea6b8d63e80eec7fa?pvs=21"
+            }
+        ],
+        "Year": "1964, 1979",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Bauhaus"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.5062,
+        "Longitude": 13.3529,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Skybreak House",
+        "Architect": [
+            {
+                "text": "Team 4",
+                "url": "https://www.notion.so/Team-4-19bd9fb493418042b75bcc350a822f66?pvs=21"
+            },
+            {
+                "text": "Norman Foster",
+                "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
+            }
+        ],
+        "Year": "1966",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [],
+        "Address ": "",
+        "Status": "",
+        "City, Region": "London, Radlett",
+        "Country": "UK",
+        "Function": "Residential",
+        "Latitude": 51.6931,
+        "Longitude": -0.3181,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "University of Toronto Scarborough - Science and Humanities Wing",
+        "Architect": {
+            "text": "John Andrews",
+            "url": "https://www.notion.so/John-Andrews-15dd9fb49341809a8067dec162964c04?pvs=21"
+        },
+        "Year": "1966",
+        "In the Media": [
+            {
+                "text": "Fahrenheit 451",
+                "url": "https://www.notion.so/Fahrenheit-451-b2ad9fb49341830dbc7401a1557b85f5?pvs=21"
+            },
+            {
+                "text": "Total Recall",
+                "url": "https://www.notion.so/Total-Recall-206d9fb49341836c8ef301b23207eefb?pvs=21"
+            }
+        ],
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "",
+        "Status": "Built",
+        "City, Region": "Toronto",
+        "Country": "Canada",
+        "Function": "Education",
+        "Latitude": 43.7875,
+        "Longitude": -79.1889,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Thamesmead South",
+        "Architect": "",
+        "Year": "1967",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Thamesmead South, London, UK",
+        "Status": "Demolished",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Residential, Urban",
+        "Latitude": 51.5016,
+        "Longitude": 0.1204,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Habitat 67",
+        "Architect": {
+            "text": "Moshe Safdie",
+            "url": "https://www.notion.so/Moshe-Safdie-19bd9fb4934180bf92dae94205a66c28?pvs=21"
+        },
+        "Year": "1967",
+        "In the Media": {
+            "text": "Total Recall",
+            "url": "https://www.notion.so/Total-Recall-206d9fb49341836c8ef301b23207eefb?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Montreal",
+        "Status": "Built",
+        "City, Region": "Montreal",
+        "Country": "Canada",
+        "Function": "Residential",
+        "Latitude": 45.5,
+        "Longitude": -73.5439,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Chelsea Drugstore",
+        "Architect": [
+            {
+                "text": "Antony Cloughley",
+                "url": "https://www.notion.so/Antony-Cloughley-1f6d9fb4934180338cfce8572a967e5d?pvs=21"
+            },
+            {
+                "text": "Colin Golding",
+                "url": "https://www.notion.so/Colin-Golding-1f6d9fb493418098b089c7587f27abc0?pvs=21"
+            }
+        ],
+        "Year": "1968",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [],
+        "Address ": "",
+        "Status": "Renovated",
+        "City, Region": "",
+        "Country": "",
+        "Function": "",
+        "Latitude": 51.4882,
+        "Longitude": -0.1617,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "UC Santa Cruz McHenry Library",
+        "Architect": [
+            {
+                "text": "John Carl Warneckle",
+                "url": "https://www.notion.so/John-Carl-Warneckle-1b7d9fb4934180ffab02e9832104becd?pvs=21"
+            },
+            {
+                "text": "Bora Architects",
+                "url": "https://www.notion.so/Bora-Architects-1b7d9fb49341809a9f70dbd425188aa0?pvs=21"
+            }
+        ],
+        "Year": "1968, 2010",
+        "In the Media": {
+            "text": "Devs",
+            "url": "https://www.notion.so/Devs-8f3d9fb493418218825881bd4cbd494f?pvs=21"
+        },
+        "Style": [],
+        "Address ": "",
+        "Status": "Renovated",
+        "City, Region": "",
+        "Country": "USA",
+        "Function": "Education",
+        "Latitude": 36.995,
+        "Longitude": -122.06,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Jeanne Hachette Center",
+        "Architect": [
+            {
+                "text": "Jean Renaudie",
+                "url": "https://www.notion.so/Jean-Renaudie-1b1d9fb4934180baa96af0cbbd37b707?pvs=21"
+            },
+            {
+                "text": "Renée Gailhoustet",
+                "url": "https://www.notion.so/Ren-e-Gailhoustet-1b1d9fb493418083b0e7ef8ad087fde2?pvs=21"
+            }
+        ],
+        "Year": "1969",
+        "In the Media": {
+            "text": "The Hunger Games: Mookingjay - Part 2",
+            "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Ivry-sur-Seine, Paris",
+        "Status": "Built",
+        "City, Region": "Paris",
+        "Country": "France",
+        "Function": "Residential",
+        "Latitude": 48.8084,
+        "Longitude": 2.3876,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Burroughs Wellcome Headquarters",
@@ -114,13 +494,127 @@
         "Style": [
             "Brutalism"
         ],
-        "Adress": "3030 East Cornwallis Road, Research Triangle Park, North Carolina, USA",
+        "Address ": "3030 East Cornwallis Road, Research Triangle Park, North Carolina, USA",
         "Status": "Demolished",
         "City, Region": "North Carolina",
         "Country": "USA",
         "Function": "Office",
         "Latitude": 35.911971,
         "Longitude": -78.869282,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Corona de Espinas",
+        "Architect": {
+            "text": "Fernando Higueras",
+            "url": "https://www.notion.so/Fernando-Higueras-1b1d9fb49341801cb6c4e9c4d259790f?pvs=21"
+        },
+        "Year": "1970",
+        "In the Media": {
+            "text": "Some Time Later",
+            "url": "https://www.notion.so/Some-Time-Later-60fd9fb493418306a34881d3c7486331?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Madrid",
+        "Status": "Built",
+        "City, Region": "Madrid",
+        "Country": "Spain",
+        "Function": "",
+        "Latitude": 40.4411,
+        "Longitude": -3.7348,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Messe Underpass",
+        "Architect": "",
+        "Year": "1970’s",
+        "In the Media": {
+            "text": "The Hunger Games: Mookingjay - Part 2",
+            "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Messedamm, 14057  Berlin, Germany",
+        "Status": "",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.5053,
+        "Longitude": 13.2808,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Brunel Lecture Centre",
+        "Architect": {
+            "text": "Richard Sheppard, Robson and Partners",
+            "url": "https://www.notion.so/Richard-Sheppard-Robson-and-Partners-19bd9fb49341809d9d0dda236162de73?pvs=21"
+        },
+        "Year": "1971",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Uxbridge, UK",
+        "Status": "",
+        "City, Region": "London, Uxbridge",
+        "Country": "UK",
+        "Function": "Education",
+        "Latitude": 51.5331,
+        "Longitude": -0.4728,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Nakagin Capsule Tower",
+        "Architect": {
+            "text": "Kisho Kurokawa",
+            "url": "https://www.notion.so/Kisho-Kurokawa-1b6d9fb4934180a48e4bd363a3005a6c?pvs=21"
+        },
+        "Year": "1972",
+        "In the Media": {
+            "text": "Star Wars: Andor",
+            "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+        },
+        "Style": [
+            "Metabolism"
+        ],
+        "Address ": "Tokyo, Japan",
+        "Status": "Demolished",
+        "City, Region": "Tokyo",
+        "Country": "Japan",
+        "Function": "",
+        "Latitude": 35.6656,
+        "Longitude": 139.7634,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Brunswick Centre",
+        "Architect": [
+            {
+                "text": "Patrick Hodgkinson",
+                "url": "https://www.notion.so/Patrick-Hodgkinson-1b6d9fb493418077a69bfe60918af51f?pvs=21"
+            },
+            {
+                "text": "Levitt Bernstei",
+                "url": "https://www.notion.so/Levitt-Bernstei-1b6d9fb493418068a4c1ec950b675eb5?pvs=21"
+            }
+        ],
+        "Year": "1972, 2006",
+        "In the Media": {
+            "text": "Star Wars: Andor",
+            "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+        },
+        "Style": [],
+        "Address ": "London, UK",
+        "Status": "Renovated",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.524,
+        "Longitude": -0.124,
         "Relevant?": "Yes"
     },
     {
@@ -137,12 +631,12 @@
         "Style": [
             "Postmodern"
         ],
-        "Adress": "Av. de la Indústria, 14, 08960 Sant Just Desvern, Barcelona, Spain",
+        "Address ": "Av. de la Indústria, 14, 08960 Sant Just Desvern, Barcelona, Spain",
         "Status": "Renovated",
         "City, Region": "Barcelona",
         "Country": "Spain",
         "Function": "Office, Residential",
-        "Latitude": 41.38123040000001,
+        "Latitude": 41.38123,
         "Longitude": 2.0683801,
         "Relevant?": "Yes"
     },
@@ -160,13 +654,264 @@
         "Style": [
             "International Style"
         ],
-        "Adress": "301-333 South Hope, Los Angeles, CA, USA",
+        "Address ": "301-333 South Hope, Los Angeles, CA, USA",
         "Status": "",
         "City, Region": "California, Los Angeles",
         "Country": "USA",
         "Function": "Office",
         "Latitude": 34.0535789,
         "Longitude": -118.2524266,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Oficinas Centrales de Infonavit",
+        "Architect": "Teodoro González León  (https://www.notion.so/Teodoro-Gonz-lez-Le-n-15ed9fb4934180aaa794f9462faa3248?pvs=21), Abraham Zabludovsky (https://www.notion.so/Abraham-Zabludovsky-15ed9fb49341805e94b0f61bb029417b?pvs=21)",
+        "Year": "1975",
+        "In the Media": {
+            "text": "Total Recall",
+            "url": "https://www.notion.so/Total-Recall-f7ed9fb49341824f9a4f0192211e01da?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Ciudad de México, Mexico",
+        "Status": "Built",
+        "City, Region": "Ciudad de México",
+        "Country": "Mexico",
+        "Function": "Office",
+        "Latitude": 19.3565,
+        "Longitude": -99.1845,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Lai Tak Tsuen",
+        "Architect": "",
+        "Year": "1975-1976",
+        "In the Media": {
+            "text": "Ghost in the Shell",
+            "url": "https://www.notion.so/Ghost-in-the-Shell-4f9d9fb49341835985a701b72cb67a69?pvs=21"
+        },
+        "Style": [],
+        "Address ": "2 – 38 Lai Tak Tsuen Road, Tai Hang, Causeway Bay, Hong Kong",
+        "Status": "Built",
+        "City, Region": "Hong Kong",
+        "Country": "Hong Kong",
+        "Function": "Residential, Social Housing",
+        "Latitude": 22.2771,
+        "Longitude": 114.1941,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Heroico Colegio Militar",
+        "Architect": "Agustín Hernández  (https://www.notion.so/Agust-n-Hern-ndez-15ed9fb49341801582fafdd520d7f0d1?pvs=21)",
+        "Year": "1976",
+        "In the Media": {
+            "text": "Total Recall",
+            "url": "https://www.notion.so/Total-Recall-f7ed9fb49341824f9a4f0192211e01da?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Ciudad de México , Mexico",
+        "Status": "Built",
+        "City, Region": "Ciudad de México",
+        "Country": "Mexico",
+        "Function": "",
+        "Latitude": 19.2583,
+        "Longitude": -99.1506,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Cape Town Civic Centre",
+        "Architect": {
+            "text": "H. van der Merwe and Partners",
+            "url": "https://www.notion.so/H-van-der-Merwe-and-Partners-1c4d9fb49341807ba034eb739275d86c?pvs=21"
+        },
+        "Year": "1976-1978, 2003",
+        "In the Media": [
+            {
+                "text": "Dredd",
+                "url": "https://www.notion.so/Dredd-985d9fb49341837e864c81022a932fdd?pvs=21"
+            },
+            {
+                "text": "The Maze Runner",
+                "url": "https://www.notion.so/The-Maze-Runner-0f8d9fb4934183829fab013cfebeb2e7?pvs=21"
+            }
+        ],
+        "Style": [
+            "Modern"
+        ],
+        "Address ": "Cape Town, South Africa",
+        "Status": "Renovated",
+        "City, Region": "Cape Town",
+        "Country": "South Africa",
+        "Function": "Cultural, Office",
+        "Latitude": -33.921,
+        "Longitude": 18.429,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Alexandra Road housing estate",
+        "Architect": {
+            "text": "Neave Brown",
+            "url": "https://www.notion.so/Neave-Brown-19bd9fb493418066bd9fdc2386b42228?pvs=21"
+        },
+        "Year": "1978",
+        "In the Media": {
+            "text": "A Clockwork Orange",
+            "url": "https://www.notion.so/A-Clockwork-Orange-358d9fb49341822994df01d5119201a0?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "London, UK",
+        "Status": "",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.5397,
+        "Longitude": -0.1842,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Espaces d'Abraxas",
+        "Architect": {
+            "text": "Ricardo Bofill",
+            "url": "https://www.notion.so/Ricardo-Bofill-1b1d9fb4934180f3b4bcc4d23a340e6a?pvs=21"
+        },
+        "Year": "1978-1983",
+        "In the Media": [
+            {
+                "text": "The Hunger Games: Mookingjay - Part 2",
+                "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+            },
+            {
+                "text": "Brazil",
+                "url": "https://www.notion.so/Brazil-de9d9fb4934183eab63801aa2945f5d8?pvs=21"
+            }
+        ],
+        "Style": [
+            "Postmodern"
+        ],
+        "Address ": "Noisy-le-Grand, Paris, France",
+        "Status": "",
+        "City, Region": "Noisy-le-Grand, Paris",
+        "Country": "France",
+        "Function": "",
+        "Latitude": 48.84,
+        "Longitude": 2.5431,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Dallas City Hall",
+        "Architect": [
+            {
+                "text": "Ieoh Ming Pei",
+                "url": "https://www.notion.so/Ieoh-Ming-Pei-195d9fb493418039b317e0f1b9f1ea41?pvs=21"
+            },
+            {
+                "text": "Pei Cobb Feed & Partners",
+                "url": "https://www.notion.so/Pei-Cobb-Feed-Partners-195d9fb4934180858af2f42ef569614d?pvs=21"
+            }
+        ],
+        "Year": "1979",
+        "In the Media": {
+            "text": "RoboCop",
+            "url": "https://www.notion.so/RoboCop-21ed9fb493418368856981ea00764d60?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Dallas, USA",
+        "Status": "Built",
+        "City, Region": "Dallas, Texas",
+        "Country": "USA",
+        "Function": "",
+        "Latitude": 32.7762,
+        "Longitude": -96.7968,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Plaza of the Americas",
+        "Architect": {
+            "text": "Harwood K Smith",
+            "url": "https://www.notion.so/Harwood-K-Smith-195d9fb4934180beb0b4fa4237194750?pvs=21"
+        },
+        "Year": "1980",
+        "In the Media": {
+            "text": "RoboCop",
+            "url": "https://www.notion.so/RoboCop-21ed9fb493418368856981ea00764d60?pvs=21"
+        },
+        "Style": [],
+        "Address ": "600-700 N. Pearl, Dallas, Texas, USA",
+        "Status": "Renovated",
+        "City, Region": "Dallas, Texas",
+        "Country": "USA",
+        "Function": "Retail",
+        "Latitude": 32.7845,
+        "Longitude": -96.7982,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Barbican Centre",
+        "Architect": [
+            {
+                "text": "Geoffry Powell",
+                "url": "https://www.notion.so/Geoffry-Powell-1b0d9fb4934180e6a16ffb6327f72ed8?pvs=21"
+            },
+            {
+                "text": "Christoph Bon",
+                "url": "https://www.notion.so/Christoph-Bon-1b0d9fb493418028bf17db3b65bcbe0d?pvs=21"
+            },
+            {
+                "text": "Peter Chamberlin",
+                "url": "https://www.notion.so/Peter-Chamberlin-1b0d9fb4934180219bf2cf4816f2e654?pvs=21"
+            }
+        ],
+        "Year": "1982",
+        "In the Media": [
+            {
+                "text": "Star Wars: Andor",
+                "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+            },
+            {
+                "text": "The Kitchen",
+                "url": "https://www.notion.so/The-Kitchen-162d9fb4934180e282ffd502c615b778?pvs=21"
+            }
+        ],
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "London, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.5202,
+        "Longitude": -0.095,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Marriot Marquis Atlanta",
+        "Architect": {
+            "text": "John Portman",
+            "url": "https://www.notion.so/John-Portman-198d9fb49341802fba81f222898e38f3?pvs=21"
+        },
+        "Year": "1985",
+        "In the Media": [
+            {
+                "text": "The Hunger Games: Catching Fire",
+                "url": "https://www.notion.so/The-Hunger-Games-Catching-Fire-1b2d9fb4934180b79e0beb7a9ee468b0?pvs=21"
+            },
+            {
+                "text": "The Hunger Games: Mookingjay - Part 2",
+                "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+            }
+        ],
+        "Style": [],
+        "Address ": "Atlanta, USA",
+        "Status": "Built",
+        "City, Region": "Atlanta, Georgia",
+        "Country": "USA",
+        "Function": "Hotel",
+        "Latitude": 33.7613,
+        "Longitude": -84.3847,
         "Relevant?": "No"
     },
     {
@@ -184,13 +929,211 @@
             "Contemporary",
             "Organicist"
         ],
-        "Adress": "Barcelona, Spain",
+        "Address ": "Barcelona, Spain",
         "Status": "",
         "City, Region": "Barcelona",
         "Country": "Spain",
         "Function": "Communications",
         "Latitude": 41.36417,
         "Longitude": 2.15056,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Velodrom",
+        "Architect": {
+            "text": "Dominique Perrault",
+            "url": "https://www.notion.so/Dominique-Perrault-1b8d9fb49341806c825bd55fe5cf25e8?pvs=21"
+        },
+        "Year": "1992-1997",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Hightech"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.5308,
+        "Longitude": 13.4508,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Spandauer See-Brücke",
+        "Architect": {
+            "text": "Walter A. Noebel",
+            "url": "https://www.notion.so/Walter-A-Noebel-1ccd9fb49341805094d8d094d8455ccf?pvs=21"
+        },
+        "Year": "1993-1997",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Modern"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.5558,
+        "Longitude": 13.2219,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Educatorium",
+        "Architect": [
+            {
+                "text": "OMA",
+                "url": "https://www.notion.so/OMA-1d6d9fb4934180809d13e75959906062?pvs=21"
+            },
+            {
+                "text": "Rem Koolhaas",
+                "url": "https://www.notion.so/Rem-Koolhaas-1d6d9fb49341804f8e34cff3743eff74?pvs=21"
+            }
+        ],
+        "Year": "1995",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Utrecht, the Netherlands",
+        "Status": "Built",
+        "City, Region": "Utrecht",
+        "Country": "Netherlands",
+        "Function": "",
+        "Latitude": 52.0833,
+        "Longitude": 5.1667,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Esplanade – Theatres on the Bay",
+        "Architect": [
+            {
+                "text": "DP Architects",
+                "url": "https://www.notion.so/DP-Architects-1ddd9fb493418087bc25d1332fcaad34?pvs=21"
+            },
+            {
+                "text": "Michael Wilford & Partners",
+                "url": "https://www.notion.so/Michael-Wilford-Partners-1ddd9fb4934180e78ae6f7e9b7f969e9?pvs=21"
+            }
+        ],
+        "Year": "1996-2002",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "1 Esplanade Drive, Singapore, 038981",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Cultural",
+        "Latitude": 1.2895,
+        "Longitude": 103.8554,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "50 Finsbury Square",
+        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+        "Year": "1997-1999",
+        "In the Media": {
+            "text": "Ex Machina",
+            "url": "https://www.notion.so/Ex-Machina-e94d9fb49341825782ea815616d2b99f?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Hightech"
+        ],
+        "Address ": "London, UK",
+        "Status": "Renovated",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Office",
+        "Latitude": 51.5217,
+        "Longitude": -0.0856,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Ciudad de las Artes y las Ciencias",
+        "Architect": {
+            "text": "Santiago Calatrava",
+            "url": "https://www.notion.so/Santiago-Calatrava-1b4d9fb49341803d8e2df81648da27b8?pvs=21"
+        },
+        "Year": "1998",
+        "In the Media": [
+            {
+                "text": "Tomorrowland",
+                "url": "https://www.notion.so/Tomorrowland-6b9d9fb4934183aa97808173ab940ae2?pvs=21"
+            },
+            {
+                "text": "Star Wars: Andor",
+                "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+            },
+            {
+                "text": "Westworld (2016)",
+                "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+            },
+            {
+                "text": "V (2009)",
+                "url": "https://www.notion.so/V-2009-6ccd9fb4934182a184d1814164692c36?pvs=21"
+            },
+            {
+                "text": "Caprica",
+                "url": "https://www.notion.so/Caprica-a3ad9fb49341821f9d0f81723d5f75c9?pvs=21"
+            }
+        ],
+        "Style": [
+            "Neo-futurism"
+        ],
+        "Address ": "Ciudad de las Artes y las Ciencias, Valencia, Spain",
+        "Status": "Built",
+        "City, Region": "Valencia",
+        "Country": "Spain",
+        "Function": "Cultural",
+        "Latitude": 39.4542,
+        "Longitude": -0.35,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Krematorium Baumschulenweg",
+        "Architect": {
+            "text": "Schultes Frank Architekten",
+            "url": "https://www.notion.so/Schultes-Frank-Architekten-15ed9fb493418073aa1af8fb041393b1?pvs=21"
+        },
+        "Year": "1999",
+        "In the Media": [
+            {
+                "text": "Æon Flux",
+                "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+            },
+            {
+                "text": "Foundation",
+                "url": "https://www.notion.so/Foundation-0fcd9fb4934183dea64b811bce3f0d2a?pvs=21"
+            },
+            {
+                "text": "The Hunger Games: The Ballad of Songbirds and Snakes",
+                "url": "https://www.notion.so/The-Hunger-Games-The-Ballad-of-Songbirds-and-Snakes-15ed9fb49341809bb081dccd87adaea0?pvs=21"
+            }
+        ],
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.4596,
+        "Longitude": 13.4912,
         "Relevant?": "Yes"
     },
     {
@@ -211,14 +1154,60 @@
             "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
         },
         "Style": [],
-        "Adress": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.52000659999999,
-        "Longitude": 13.404954,
+        "Latitude": 52.5358,
+        "Longitude": 13.3919,
         "Relevant?": "Yes"
+    },
+    {
+        "Name": "Mexikanische Botschaft",
+        "Architect": {
+            "text": "Francisco Serrano Arquitectos",
+            "url": "https://www.notion.so/Francisco-Serrano-Arquitectos-1b7d9fb4934180438f1feb149866b715?pvs=21"
+        },
+        "Year": "2000",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.5081,
+        "Longitude": 13.3512,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Tierheim in Berlin-Falkenberg",
+        "Architect": {
+            "text": "Dietrich Bangert Architekten",
+            "url": "https://www.notion.so/Dietrich-Bangert-Architekten-1cbd9fb4934180c2b701f0b027a67a38?pvs=21"
+        },
+        "Year": "2000-2001",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "Berlin, Germany",
+        "Status": "Built",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "Animal shelter",
+        "Latitude": 52.5742,
+        "Longitude": 13.5461,
+        "Relevant?": "No"
     },
     {
         "Name": "Paul Löbe Haus",
@@ -234,13 +1223,13 @@
         "Style": [
             "Postmodern"
         ],
-        "Adress": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.52000659999999,
-        "Longitude": 13.404954,
+        "Latitude": 52.5203,
+        "Longitude": 13.3747,
         "Relevant?": "No"
     },
     {
@@ -252,7 +1241,7 @@
             "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
         },
         "Style": [],
-        "Adress": "Potsdam, Germany",
+        "Address ": "Potsdam, Germany",
         "Status": "Built",
         "City, Region": "Potsdam",
         "Country": "Germany",
@@ -273,7 +1262,7 @@
             "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
         },
         "Style": [],
-        "Adress": "Potsdam, Brandenburg, Germany",
+        "Address ": "Potsdam, Brandenburg, Germany",
         "Status": "",
         "City, Region": "Potsdam",
         "Country": "Germany",
@@ -281,6 +1270,56 @@
         "Latitude": 52.3905689,
         "Longitude": 13.0644729,
         "Relevant?": "No"
+    },
+    {
+        "Name": "City Hall",
+        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+        "Year": "2002",
+        "In the Media": {
+            "text": "Mickey 17",
+            "url": "https://www.notion.so/Mickey-17-1b0d9fb493418016b4b2d39c3a409704?pvs=21"
+        },
+        "Style": [
+            "Hightech"
+        ],
+        "Address ": "London, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.507,
+        "Longitude": 0.0161,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Ramon C. Cortines High School of Performing Arts",
+        "Architect": [
+            {
+                "text": "Coop Himmelblau",
+                "url": "https://www.notion.so/Coop-Himmelblau-1dbd9fb493418023917bf8cc61f502ae?pvs=21"
+            },
+            {
+                "text": "HMC Architects",
+                "url": "https://www.notion.so/HMC-Architects-1dbd9fb4934180c39553ca2a19cfcc4d?pvs=21"
+            }
+        ],
+        "Year": "2002-2009",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Deconstructivism"
+        ],
+        "Address ": "LA, California, USA",
+        "Status": "",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Education",
+        "Latitude": 34.0596,
+        "Longitude": -118.244,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Crescent House",
@@ -296,14 +1335,58 @@
         "Style": [
             "Contemporary"
         ],
-        "Adress": "532 Neptune Ave, Encinitas, California, USA",
+        "Address ": "532 Neptune Ave, Encinitas, California, USA",
         "Status": "Built",
-        "City, Region": "Encinitas, California",
+        "City, Region": "California, Encinillas",
         "Country": "USA",
         "Function": "Residential",
         "Latitude": 33.058349,
         "Longitude": -117.301939,
         "Relevant?": "No"
+    },
+    {
+        "Name": "McLaren Headquarters",
+        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21), Norman Foster (https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21)",
+        "Year": "2004",
+        "In the Media": {
+            "text": "Star Wars: Andor",
+            "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+        },
+        "Style": [
+            "Hightech"
+        ],
+        "Address ": "London, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.3458,
+        "Longitude": -0.5483,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Juvet landscape hotel",
+        "Architect": {
+            "text": "Jensen & Skodvin Architects",
+            "url": "https://www.notion.so/Jensen-Skodvin-Architects-1d9d9fb4934180489092e2f29ea8def2?pvs=21"
+        },
+        "Year": "2004-2008",
+        "In the Media": {
+            "text": "Ex Machina",
+            "url": "https://www.notion.so/Ex-Machina-e94d9fb49341825782ea815616d2b99f?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Nordic"
+        ],
+        "Address ": "Gudbrandsjuvet, Valldal, Norway",
+        "Status": "Built",
+        "City, Region": "",
+        "Country": "Norway",
+        "Function": "Hotel",
+        "Latitude": 62.3303,
+        "Longitude": 7.4695,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Lasalle College of the Arts City Campus",
@@ -319,7 +1402,7 @@
         "Style": [
             "Contemporary"
         ],
-        "Adress": "1 McNally St, Singapore 187940",
+        "Address ": "1 McNally St, Singapore 187940",
         "Status": "Built",
         "City, Region": "Singapore",
         "Country": "Singapore",
@@ -327,6 +1410,30 @@
         "Latitude": 1.3029395,
         "Longitude": 103.8515167,
         "Relevant?": "No"
+    },
+    {
+        "Name": "Summer House Storfjord",
+        "Architect": {
+            "text": "Jensen & Skodvin Architects",
+            "url": "https://www.notion.so/Jensen-Skodvin-Architects-1d9d9fb4934180489092e2f29ea8def2?pvs=21"
+        },
+        "Year": "2007-2013",
+        "In the Media": {
+            "text": "Ex Machina",
+            "url": "https://www.notion.so/Ex-Machina-e94d9fb49341825782ea815616d2b99f?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Nordic"
+        ],
+        "Address ": "Storfjord, Norway",
+        "Status": "Built",
+        "City, Region": "",
+        "Country": "Norway",
+        "Function": "Residential",
+        "Latitude": 62.1537,
+        "Longitude": 6.5776,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Stadium Mass Rapid Transit (MRT) Station",
@@ -342,13 +1449,37 @@
         "Style": [
             "Contemporary"
         ],
-        "Adress": "3 Stadium Walk, Singapore 397692",
+        "Address ": "3 Stadium Walk, Singapore 397692",
         "Status": "Built",
         "City, Region": "Singapore",
         "Country": "Singapore",
         "Function": "Transportation",
         "Latitude": 1.3027748,
         "Longitude": 103.8753769,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "National Gallery Singapore",
+        "Architect": {
+            "text": "Studio Milou",
+            "url": "https://www.notion.so/Studio-Milou-1ded9fb493418047baf5cd160468fe4d?pvs=21"
+        },
+        "Year": "2008-2015",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Neoclassic"
+        ],
+        "Address ": "1 St Andrew's Rd, Singapore 178957",
+        "Status": "Renovated",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Museum",
+        "Latitude": 1.2907,
+        "Longitude": 103.8517,
         "Relevant?": "No"
     },
     {
@@ -371,7 +1502,7 @@
         "Style": [
             "Contemporary"
         ],
-        "Adress": "2 Orchard Turn, Singapore 238801",
+        "Address ": "2 Orchard Turn, Singapore 238801",
         "Status": "Built",
         "City, Region": "Singapore",
         "Country": "Singapore",
@@ -395,7 +1526,7 @@
             "Biophilic",
             "Contemporary"
         ],
-        "Adress": "1 Zubir Said Dr, Singapore 227968",
+        "Address ": "1 Zubir Said Dr, Singapore 227968",
         "Status": "",
         "City, Region": "Singapore",
         "Country": "Singapore",
@@ -422,13 +1553,57 @@
             "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
         },
         "Style": [],
-        "Adress": "Helix Bridge, Singapore",
+        "Address ": "Helix Bridge, Singapore",
         "Status": "Built",
         "City, Region": "Singapore",
         "Country": "Singapore",
         "Function": "Bridge",
         "Latitude": 1.2874774,
         "Longitude": 103.8606326,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "The Broad",
+        "Architect": "Diller Scofidio + Renfro (https://www.notion.so/Diller-Scofidio-Renfro-1dad9fb4934180d089c0cb64c4fc077e?pvs=21)",
+        "Year": "2011-2015",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary",
+            "Parametric"
+        ],
+        "Address ": "Los Angeles, USA",
+        "Status": "Built",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Museum",
+        "Latitude": 34.0545,
+        "Longitude": -118.25,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Parkroyal on Pickering",
+        "Architect": {
+            "text": "WOHA",
+            "url": "https://www.notion.so/WOHA-1dbd9fb49341805eabfde6f8311ca4ef?pvs=21"
+        },
+        "Year": "2013",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "3 Upper Pickering St, Singapore 058289",
+        "Status": "Built",
+        "City, Region": "Singapore",
+        "Country": "Singapore",
+        "Function": "Hotel",
+        "Latitude": 1.2863,
+        "Longitude": 103.8454,
         "Relevant?": "No"
     },
     {
@@ -451,12 +1626,12 @@
         "Style": [
             "Contemporary"
         ],
-        "Adress": "877 Francisco St, Los Angeles, CA 90017, United States",
+        "Address ": "877 Francisco St, Los Angeles, CA 90017, United States",
         "Status": "Built",
         "City, Region": "California, Los Angeles",
         "Country": "USA",
         "Function": "Residential, Retail",
-        "Latitude": 34.04845530000001,
+        "Latitude": 34.048455,
         "Longitude": -118.2634744,
         "Relevant?": "No"
     },
@@ -475,7 +1650,7 @@
             "Contemporary",
             "Organicist"
         ],
-        "Adress": "9 Park St, Singapore 068803",
+        "Address ": "9 Park St, Singapore 068803",
         "Status": "Built",
         "City, Region": "Singapore",
         "Country": "Singapore",
@@ -483,5 +1658,43 @@
         "Latitude": 1.2773089,
         "Longitude": 103.8530138,
         "Relevant?": "Yes"
+    },
+    {
+        "Name": "Bund Financial Centre",
+        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21), Heatherwick Studio (https://www.notion.so/Heatherwick-Studio-160d9fb4934180c7981ce37b8ff9ec79?pvs=21)",
+        "Year": "2017",
+        "In the Media": {
+            "text": "Dune: Prophecy",
+            "url": "https://www.notion.so/Dune-Prophecy-160d9fb4934180f48629e70b85f8f695?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "Shanghai, China",
+        "Status": "Built",
+        "City, Region": "Shanghai",
+        "Country": "China",
+        "Function": "",
+        "Latitude": 31.2345,
+        "Longitude": 121.4826,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Sistema Metro, Línea 1",
+        "Architect": "",
+        "Year": "",
+        "In the Media": {
+            "text": "Total Recall",
+            "url": "https://www.notion.so/Total-Recall-f7ed9fb49341824f9a4f0192211e01da?pvs=21"
+        },
+        "Style": [],
+        "Address ": "Ciudad de México, Mexico",
+        "Status": "",
+        "City, Region": "Ciudad de México",
+        "Country": "Mexico",
+        "Function": "",
+        "Latitude": 19.4233,
+        "Longitude": -99.1632,
+        "Relevant?": "No"
     }
 ]
