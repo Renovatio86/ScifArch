@@ -425,7 +425,7 @@
         "Relevant?": "No"
     },
     {
-        "Name": "UC Santa Cruz McHenry Library",
+        "Name": "UC Santa Cruz McHenry Library",
         "Architect": [
             {
                 "text": "John Carl Warneckle",
@@ -1043,7 +1043,9 @@
     },
     {
         "Name": "50 Finsbury Square",
-        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+        "Architect": {
+            "text": "Foster + Partners",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
         "Year": "1997-1999",
         "In the Media": {
             "text": "Ex Machina",
@@ -1273,7 +1275,9 @@
     },
     {
         "Name": "City Hall",
-        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+        "Architect": {
+            "text": "Foster + Partners",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
         "Year": "2002",
         "In the Media": {
             "text": "Mickey 17",
@@ -1346,7 +1350,16 @@
     },
     {
         "Name": "McLaren Headquarters",
-        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21), Norman Foster (https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21)",
+        "Architect": [
+            {
+            "text": "Foster + Partners",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+        },
+        {
+            "text": "Norman Foster",
+            "url": "https (https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21)"
+            }
+        ],
         "Year": "2004",
         "In the Media": {
             "text": "Star Wars: Andor",
@@ -1661,7 +1674,15 @@
     },
     {
         "Name": "Bund Financial Centre",
-        "Architect": "Foster + Partners (https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21), Heatherwick Studio (https://www.notion.so/Heatherwick-Studio-160d9fb4934180c7981ce37b8ff9ec79?pvs=21)",
+        "Architect": [
+            {
+                "text": "Foster + Partners",
+                "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"},
+            {
+                "text": "Heatherwick Studio",
+                "url": "https://www.notion.so/Heatherwick-Studio-160d9fb4934180c7981ce37b8ff9ec79?pvs=21"
+            }
+            ],
         "Year": "2017",
         "In the Media": {
             "text": "Dune: Prophecy",
