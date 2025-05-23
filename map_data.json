@@ -1045,7 +1045,7 @@
         "Name": "50 Finsbury Square",
         "Architect": {
             "text": "Foster + Partners",
-            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)"},
         "Year": "1997-1999",
         "In the Media": {
             "text": "Ex Machina",
@@ -1277,7 +1277,7 @@
         "Name": "City Hall",
         "Architect": {
             "text": "Foster + Partners",
-            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"},
         "Year": "2002",
         "In the Media": {
             "text": "Mickey 17",
@@ -1353,8 +1353,8 @@
         "Architect": [
             {
             "text": "Foster + Partners",
-            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21)",
-        },
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"},
+        ,
         {
             "text": "Norman Foster",
             "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
