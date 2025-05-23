@@ -701,7 +701,9 @@
     },
     {
         "Name": "Heroico Colegio Militar",
-        "Architect": "Agustín Hernández  (https://www.notion.so/Agust-n-Hern-ndez-15ed9fb49341801582fafdd520d7f0d1?pvs=21)",
+        "Architect": {
+            "text": "Agustín Hernández",
+            "url": "https://www.notion.so/Agust-n-Hern-ndez-15ed9fb49341801582fafdd520d7f0d1?pvs=21"},
         "Year": "1976",
         "In the Media": {
             "text": "Total Recall",
@@ -1577,7 +1579,9 @@
     },
     {
         "Name": "The Broad",
-        "Architect": "Diller Scofidio + Renfro (https://www.notion.so/Diller-Scofidio-Renfro-1dad9fb4934180d089c0cb64c4fc077e?pvs=21)",
+        "Architect": {
+            "text": "Diller Scofidio + Renfro",
+            "url": "https://www.notion.so/Diller-Scofidio-Renfro-1dad9fb4934180d089c0cb64c4fc077e?pvs=21"},
         "Year": "2011-2015",
         "In the Media": {
             "text": "Westworld (2016)",
