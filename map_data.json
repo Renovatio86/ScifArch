@@ -6,13 +6,14 @@
             "url": "https://www.notion.so/Georg-Wenzeslaus-von-Knobelsdorff-1b8d9fb4934180738308c57e836b8d7d?pvs=21"
         },
         "Year": "1745-1747",
-        "In the Media": 
-            {
-                "text": "Æon Flux",
-                "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
-            },
-        "Style": ["Rococo"],
-        "Address": "Potsdam, Germany",
+        "In the Media": {
+            "text": "Æon Flux",
+            "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
+        },
+        "Style": [
+            "Rococo"
+        ],
+        "Address ": "Potsdam, Germany",
         "Status": "Built",
         "City, Region": "Potsdam",
         "Country": "Germany",
@@ -41,7 +42,7 @@
         "Style": [
             "Neoclassic"
         ],
-        "Address": "Berlin, Germany",
+        "Address ": "Berlin, Germany",
         "Status": "Built",
         "City, Region": "Berlin",
         "Country": "Germany",
@@ -83,12 +84,10 @@
         "Name": "Tempelhof Airport",
         "Architect": "",
         "Year": "1923",
-        "In the Media": [
-            {
-                "text": "The Hunger Games: Mookingjay - Part 2",
-                "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
-            }
-        ],
+        "In the Media": {
+            "text": "The Hunger Games: Mookingjay - Part 2",
+            "url": "https://www.notion.so/The-Hunger-Games-Mookingjay-Part-2-81bd9fb4934182cbb3e4018ffa1093b8?pvs=21"
+        },
         "Style": [],
         "Address ": "Tempelhof, Berlin",
         "Status": "Abandoned",
@@ -353,8 +352,8 @@
         "City, Region": "Toronto",
         "Country": "Canada",
         "Function": "Education",
-        "Latitude": 43.7875,
-        "Longitude": -79.1889,
+        "Latitude": 43.7832182,
+        "Longitude": -79.1870405,
         "Relevant?": "Yes"
     },
     {
@@ -426,7 +425,7 @@
         "Relevant?": "No"
     },
     {
-        "Name": "UC Santa Cruz McHenry Library",
+        "Name": "UC Santa Cruz McHenry Library",
         "Architect": [
             {
                 "text": "John Carl Warneckle",
@@ -666,16 +665,7 @@
     },
     {
         "Name": "Oficinas Centrales de Infonavit",
-        "Architect": [
-            {
-                "text": "Teodoro González León",
-                "url": "https://www.notion.so/Teodoro-Gonz-lez-Le-n-15ed9fb4934180aaa794f9462faa3248?pvs=21"
-            },
-            {
-                "text": "Abraham Zabludovsky",
-                "url": "https://www.notion.so/Abraham-Zabludovsky-15ed9fb49341805e94b0f61bb029417b?pvs=21"
-            }
-        ],
+        "Architect": "Teodoro González León  (https://www.notion.so/Teodoro-Gonz-lez-Le-n-15ed9fb4934180aaa794f9462faa3248?pvs=21), Abraham Zabludovsky (https://www.notion.so/Abraham-Zabludovsky-15ed9fb49341805e94b0f61bb029417b?pvs=21)",
         "Year": "1975",
         "In the Media": {
             "text": "Total Recall",
@@ -711,9 +701,7 @@
     },
     {
         "Name": "Heroico Colegio Militar",
-        "Architect": {
-            "text": "Agustín Hernández",
-            "url": "https://www.notion.so/Agust-n-Hern-ndez-15ed9fb49341801582fafdd520d7f0d1?pvs=21"},
+        "Architect": "Agustín Hernández  (https://www.notion.so/Agust-n-Hern-ndez-15ed9fb49341801582fafdd520d7f0d1?pvs=21)",
         "Year": "1976",
         "In the Media": {
             "text": "Total Recall",
@@ -1287,10 +1275,11 @@
         "Relevant?": "No"
     },
     {
-        "Name": "City Hall",
+        "Name": "The Old London City Hall",
         "Architect": {
             "text": "Foster + Partners",
-            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"},
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
+        },
         "Year": "2002",
         "In the Media": {
             "text": "Mickey 17",
@@ -1299,13 +1288,13 @@
         "Style": [
             "Hightech"
         ],
-        "Address ": "London, UK",
+        "Address ": "110 The Queen's Walk, London SE1 2AA, UK",
         "Status": "Built",
         "City, Region": "London",
         "Country": "UK",
         "Function": "",
-        "Latitude": 51.507,
-        "Longitude": 0.0161,
+        "Latitude": 51.50485219,
+        "Longitude": -0.07863935,
         "Relevant?": "Yes"
     },
     {
@@ -1368,9 +1357,9 @@
                 "text": "Foster + Partners",
                 "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
             },
-        {
-            "text": "Norman Foster",
-            "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
+            {
+                "text": "Norman Foster",
+                "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
             }
         ],
         "Year": "2004",
@@ -1457,8 +1446,8 @@
         "City, Region": "",
         "Country": "Norway",
         "Function": "Residential",
-        "Latitude": 62.1537,
-        "Longitude": 6.5776,
+        "Latitude": 62.2943,
+        "Longitude": 7.3044,
         "Relevant?": "Yes"
     },
     {
@@ -1592,7 +1581,8 @@
         "Name": "The Broad",
         "Architect": {
             "text": "Diller Scofidio + Renfro",
-            "url": "https://www.notion.so/Diller-Scofidio-Renfro-1dad9fb4934180d089c0cb64c4fc077e?pvs=21"},
+            "url": "https://www.notion.so/Diller-Scofidio-Renfro-1dad9fb4934180d089c0cb64c4fc077e?pvs=21"
+        },
         "Year": "2011-2015",
         "In the Media": {
             "text": "Westworld (2016)",
@@ -1692,12 +1682,13 @@
         "Architect": [
             {
                 "text": "Foster + Partners",
-                "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"},
+                "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
+            },
             {
                 "text": "Heatherwick Studio",
                 "url": "https://www.notion.so/Heatherwick-Studio-160d9fb4934180c7981ce37b8ff9ec79?pvs=21"
             }
-            ],
+        ],
         "Year": "2017",
         "In the Media": {
             "text": "Dune: Prophecy",
