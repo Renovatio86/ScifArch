@@ -239,8 +239,8 @@
         "City, Region": "London, Oxford",
         "Country": "UK",
         "Function": "Residential",
-        "Latitude": 51.8566,
-        "Longitude": -1.5956,
+        "Latitude": 51.8594,
+        "Longitude": -1.59348,
         "Relevant?": "Yes"
     },
     {
@@ -323,8 +323,8 @@
         "City, Region": "London, Radlett",
         "Country": "UK",
         "Function": "Residential",
-        "Latitude": 51.6931,
-        "Longitude": -0.3181,
+        "Latitude": 51.692898,
+        "Longitude": -0.318179,
         "Relevant?": "Yes"
     },
     {
@@ -1244,13 +1244,13 @@
             "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
         },
         "Style": [],
-        "Address ": "Potsdam, Germany",
+        "Address ": "Erich-Mendelsohn-Allee 73A, 14469 Potsdam, Germany",
         "Status": "Built",
         "City, Region": "Potsdam",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.3905689,
-        "Longitude": 13.0644729,
+        "Latitude": 52.41918,
+        "Longitude": 13.04536,
         "Relevant?": "No"
     },
     {
@@ -1265,13 +1265,13 @@
             "url": "https://www.notion.so/on-Flux-662d9fb493418247afe981807030a85d?pvs=21"
         },
         "Style": [],
-        "Address ": "Potsdam, Brandenburg, Germany",
+        "Address ": "Georg-Hermann-Allee 99, 14469 Potsdam, Germany",
         "Status": "",
         "City, Region": "Potsdam",
         "Country": "Germany",
         "Function": "",
-        "Latitude": 52.3905689,
-        "Longitude": 13.0644729,
+        "Latitude": 52.419,
+        "Longitude": 13.04947,
         "Relevant?": "No"
     },
     {
@@ -1399,8 +1399,8 @@
         "City, Region": "",
         "Country": "Norway",
         "Function": "Hotel",
-        "Latitude": 62.3303,
-        "Longitude": 7.4695,
+        "Latitude": 62.3331,
+        "Longitude": 7.47088,
         "Relevant?": "Yes"
     },
     {
@@ -1578,6 +1578,29 @@
         "Relevant?": "No"
     },
     {
+        "Name": "Bloomberg HQ London",
+        "Architect": {
+            "text": "Foster + Partners",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
+        },
+        "Year": "2010-2017",
+        "In the Media": {
+            "text": "Mickey 17",
+            "url": "https://www.notion.so/Mickey-17-1b0d9fb493418016b4b2d39c3a409704?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "309 Queen Victoria St, London EC4N 4TQ, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Office",
+        "Latitude": "51,51283",
+        "Longitude": -0.09113,
+        "Relevant?": "Yes"
+    },
+    {
         "Name": "The Broad",
         "Architect": {
             "text": "Diller Scofidio + Renfro",
@@ -1651,6 +1674,29 @@
         "Function": "Residential, Retail",
         "Latitude": 34.048455,
         "Longitude": -118.2634744,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Pheasants House",
+        "Architect": {
+            "text": "Sarah Griffiths + Amin Taha",
+            "url": "https://www.notion.so/Sarah-Griffiths-Amin-Taha-1fed9fb4934180be8e99d4f4fd2756a9?pvs=21"
+        },
+        "Year": "2017",
+        "In the Media": {
+            "text": "Mickey 17",
+            "url": "https://www.notion.so/Mickey-17-1b0d9fb493418016b4b2d39c3a409704?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "Near Henley-on-Thames RG9 3BL, UK",
+        "Status": "Built",
+        "City, Region": "Henley-on-Thames",
+        "Country": "UK",
+        "Function": "Residential",
+        "Latitude": "51,55394",
+        "Longitude": "-0,86355",
         "Relevant?": "No"
     },
     {
