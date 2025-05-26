@@ -1596,7 +1596,7 @@
         "City, Region": "London",
         "Country": "UK",
         "Function": "Office",
-        "Latitude": "51,51283",
+        "Latitude": 51.51283,
         "Longitude": -0.09113,
         "Relevant?": "Yes"
     },
@@ -1695,8 +1695,8 @@
         "City, Region": "Henley-on-Thames",
         "Country": "UK",
         "Function": "Residential",
-        "Latitude": "51,55394",
-        "Longitude": "-0,86355",
+        "Latitude": 51.55394,
+        "Longitude": -0.86355,
         "Relevant?": "No"
     },
     {
