@@ -659,8 +659,8 @@
         "City, Region": "California, Los Angeles",
         "Country": "USA",
         "Function": "Office",
-        "Latitude": 34.0535789,
-        "Longitude": -118.2524266,
+        "Latitude": 34.05366,
+        "Longitude": -118.25297,
         "Relevant?": "No"
     },
     {
@@ -936,6 +936,52 @@
         "Function": "Communications",
         "Latitude": 41.36417,
         "Longitude": 2.15056,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Zubizuri",
+        "Architect": {
+            "text": "Santiago Calatrava",
+            "url": "https://www.notion.so/Santiago-Calatrava-1b4d9fb49341803d8e2df81648da27b8?pvs=21"
+        },
+        "Year": "1990-1997",
+        "In the Media": {
+            "text": "Jupiter Ascending",
+            "url": "https://www.notion.so/Jupiter-Ascending-2dbd9fb4934182e9a38081eef370bc27?pvs=21"
+        },
+        "Style": [
+            "Neo-futurism"
+        ],
+        "Address ": "Zubizuri, Abando, 48001 Bilbao, Biscay, España",
+        "Status": "Built",
+        "City, Region": "Bilbao",
+        "Country": "Spain",
+        "Function": "Bridge",
+        "Latitude": 43.26652,
+        "Longitude": -2.92776,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "Guggenheim Bilbao",
+        "Architect": {
+            "text": "Frank Gehry",
+            "url": "https://www.notion.so/Frank-Gehry-15dd9fb49341800191c1d7531e17201a?pvs=21"
+        },
+        "Year": "1992-1997",
+        "In the Media": {
+            "text": "Jupiter Ascending",
+            "url": "https://www.notion.so/Jupiter-Ascending-2dbd9fb4934182e9a38081eef370bc27?pvs=21"
+        },
+        "Style": [
+            "Deconstructivism"
+        ],
+        "Address ": "Abandoibarra Etorb., 2, Abando, 48009 Bilbao, Bizkaia, España",
+        "Status": "Built",
+        "City, Region": "Bilbao",
+        "Country": "Spain",
+        "Function": "Museum",
+        "Latitude": 43.26885,
+        "Longitude": -2.934,
         "Relevant?": "Yes"
     },
     {
@@ -1620,8 +1666,8 @@
         "City, Region": "California, Los Angeles",
         "Country": "USA",
         "Function": "Museum",
-        "Latitude": 34.0545,
-        "Longitude": -118.25,
+        "Latitude": 34.05445,
+        "Longitude": -118.25059,
         "Relevant?": "Yes"
     },
     {
