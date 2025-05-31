@@ -142,6 +142,43 @@
         "Relevant?": "No"
     },
     {
+        "Name": "Olympiastadion Berlin",
+        "Architect": [
+            {
+                "text": "Werner March",
+                "url": "https://www.notion.so/Werner-March-202d9fb4934180919998e604341694ba?pvs=21"
+            },
+            {
+                "text": "Albert Speer",
+                "url": "https://www.notion.so/Albert-Speer-202d9fb4934180b98179f42920fa73e9?pvs=21"
+            },
+            {
+                "text": "Friedrich Wilhelm Krahe",
+                "url": "https://www.notion.so/Friedrich-Wilhelm-Krahe-202d9fb49341809eb6e8cd0a702fa85e?pvs=21"
+            },
+            {
+                "text": "GMP",
+                "url": "https://www.notion.so/GMP-202d9fb49341802992cccde7ef2c4523?pvs=21"
+            }
+        ],
+        "Year": "1934-1936, 1974, 2000-2004",
+        "In the Media": {
+            "text": "Equilibrium",
+            "url": "https://www.notion.so/Equilibrium-173d9fb493418345a1e3015a2c1d240d?pvs=21"
+        },
+        "Style": [
+            "Fascist Architecture"
+        ],
+        "Address ": "Olympischer Platz 3, 14053 Berlin, Germany",
+        "Status": "Renovated",
+        "City, Region": "Berlin",
+        "Country": "Germany",
+        "Function": "",
+        "Latitude": 52.51483,
+        "Longitude": 13.23952,
+        "Relevant?": "Yes"
+    },
+    {
         "Name": "Marin County Civic Center",
         "Architect": {
             "text": "Frank Lloyd Wright",
@@ -747,6 +784,43 @@
         "Relevant?": "No"
     },
     {
+        "Name": "Les Damiers",
+        "Architect": [
+            {
+                "text": "Michel Folliasson",
+                "url": "https://www.notion.so/Michel-Folliasson-202d9fb4934180d59c5bcf22b60ddb52?pvs=21"
+            },
+            {
+                "text": "Abro Kandjian",
+                "url": "https://www.notion.so/Abro-Kandjian-202d9fb4934180338991ef5de3592e68?pvs=21"
+            },
+            {
+                "text": "Jacques Binoux",
+                "url": "https://www.notion.so/Jacques-Binoux-202d9fb4934180189977e760db6ddfae?pvs=21"
+            },
+            {
+                "text": "Henri Kandjian",
+                "url": "https://www.notion.so/Henri-Kandjian-202d9fb4934180adaa27e39fba589236?pvs=21"
+            }
+        ],
+        "Year": "1976, 2025?",
+        "In the Media": {
+            "text": "The Kitchen",
+            "url": "https://www.notion.so/The-Kitchen-162d9fb4934180e282ffd502c615b778?pvs=21"
+        },
+        "Style": [
+            "Brutalism"
+        ],
+        "Address ": "Voie de l'Ancre, 92400 Courbevoie, France",
+        "Status": "Demolished",
+        "City, Region": "Paris",
+        "Country": "France",
+        "Function": "Residential",
+        "Latitude": 48.88908,
+        "Longitude": 2.25268,
+        "Relevant?": "No"
+    },
+    {
         "Name": "Alexandra Road housing estate",
         "Architect": {
             "text": "Neave Brown",
@@ -962,6 +1036,36 @@
         "Relevant?": "Yes"
     },
     {
+        "Name": "Canary Wharf Jubilee Line Station",
+        "Architect": {
+            "text": "Foster + Partners",
+            "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
+        },
+        "Year": "1991-1998",
+        "In the Media": [
+            {
+                "text": "Brave New World",
+                "url": "https://www.notion.so/Brave-New-World-f9cd9fb4934183cb84f801b68639b4c7?pvs=21"
+            },
+            {
+                "text": "Star Wars: Rogue One",
+                "url": "https://www.notion.so/Star-Wars-Rogue-One-204d9fb493418007bf28f113759bb4f7?pvs=21"
+            }
+        ],
+        "Style": [
+            "Contemporary",
+            "Hightech"
+        ],
+        "Address ": "3 Heron Quays Rd, London E14 4HJ, United Kingdom",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Transportation",
+        "Latitude": 51.50364,
+        "Longitude": -0.01943,
+        "Relevant?": "Yes"
+    },
+    {
         "Name": "Guggenheim Bilbao",
         "Architect": {
             "text": "Frank Gehry",
@@ -1138,6 +1242,10 @@
             {
                 "text": "Caprica",
                 "url": "https://www.notion.so/Caprica-a3ad9fb49341821f9d0f81723d5f75c9?pvs=21"
+            },
+            {
+                "text": "Brave New World",
+                "url": "https://www.notion.so/Brave-New-World-f9cd9fb4934183cb84f801b68639b4c7?pvs=21"
             }
         ],
         "Style": [
@@ -1150,6 +1258,35 @@
         "Function": "Cultural",
         "Latitude": 39.4542,
         "Longitude": -0.35,
+        "Relevant?": "Yes"
+    },
+    {
+        "Name": "McLaren Headquarters",
+        "Architect": [
+            {
+                "text": "Foster + Partners",
+                "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
+            },
+            {
+                "text": "Norman Foster",
+                "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
+            }
+        ],
+        "Year": "1998-2004",
+        "In the Media": {
+            "text": "Star Wars: Andor",
+            "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+        },
+        "Style": [
+            "Hightech"
+        ],
+        "Address ": "London, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "",
+        "Latitude": 51.3458,
+        "Longitude": -0.5483,
         "Relevant?": "Yes"
     },
     {
@@ -1339,8 +1476,8 @@
         "City, Region": "London",
         "Country": "UK",
         "Function": "",
-        "Latitude": 51.50485219,
-        "Longitude": -0.07863935,
+        "Latitude": 51.50485,
+        "Longitude": -0.07864,
         "Relevant?": "Yes"
     },
     {
@@ -1395,35 +1532,6 @@
         "Latitude": 33.058349,
         "Longitude": -117.301939,
         "Relevant?": "No"
-    },
-    {
-        "Name": "McLaren Headquarters",
-        "Architect": [
-            {
-                "text": "Foster + Partners",
-                "url": "https://www.notion.so/Foster-Partners-160d9fb4934180198866cd713488078c?pvs=21"
-            },
-            {
-                "text": "Norman Foster",
-                "url": "https://www.notion.so/Norman-Foster-15dd9fb49341807bb732eec76d727488?pvs=21"
-            }
-        ],
-        "Year": "2004",
-        "In the Media": {
-            "text": "Star Wars: Andor",
-            "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
-        },
-        "Style": [
-            "Hightech"
-        ],
-        "Address ": "London, UK",
-        "Status": "Built",
-        "City, Region": "London",
-        "Country": "UK",
-        "Function": "",
-        "Latitude": 51.3458,
-        "Longitude": -0.5483,
-        "Relevant?": "Yes"
     },
     {
         "Name": "Juvet landscape hotel",
@@ -1515,8 +1623,34 @@
         "City, Region": "Singapore",
         "Country": "Singapore",
         "Function": "Transportation",
-        "Latitude": 1.3027748,
-        "Longitude": 103.8753769,
+        "Latitude": 1.30277,
+        "Longitude": 103.87538,
+        "Relevant?": "No"
+    },
+    {
+        "Name": "Canary Wharf Railway Station",
+        "Architect": "",
+        "Year": "2008-2015",
+        "In the Media": [
+            {
+                "text": "Star Wars: Andor",
+                "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+            },
+            {
+                "text": "Star Wars: Rogue One",
+                "url": "https://www.notion.so/Star-Wars-Rogue-One-204d9fb493418007bf28f113759bb4f7?pvs=21"
+            }
+        ],
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "London E14 5HQ, United Kingdom",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Transportation",
+        "Latitude": 51.51605,
+        "Longitude": -0.01762,
         "Relevant?": "No"
     },
     {
@@ -1542,6 +1676,29 @@
         "Latitude": 1.2907,
         "Longitude": 103.8517,
         "Relevant?": "No"
+    },
+    {
+        "Name": "New Carver Apartments",
+        "Architect": {
+            "text": "Michael Maltzan Architecture",
+            "url": "https://www.notion.so/Michael-Maltzan-Architecture-204d9fb4934180849a8bdb3a940622c0?pvs=21"
+        },
+        "Year": "2009",
+        "In the Media": {
+            "text": "Westworld (2016)",
+            "url": "https://www.notion.so/Westworld-2016-2dbd9fb4934183ddb1cc81fbca2a7ecd?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "1624 S Hope St, Los Angeles, CA 90015, USA",
+        "Status": "Built",
+        "City, Region": "California, Los Angeles",
+        "Country": "USA",
+        "Function": "Residential",
+        "Latitude": 34.03567,
+        "Longitude": -118.26771,
+        "Relevant?": "Yes"
     },
     {
         "Name": "ION Orchard",
@@ -1595,6 +1752,29 @@
         "Latitude": 1.2992888,
         "Longitude": 103.8487317,
         "Relevant?": "No"
+    },
+    {
+        "Name": "20 Fenchurch Street (The Walkie Talkie)",
+        "Architect": {
+            "text": "Rafael Viñoli Architects",
+            "url": "https://www.notion.so/Rafael-Vi-oli-Architects-204d9fb4934180afb7e0edb2c1976270?pvs=21"
+        },
+        "Year": "2009-2014",
+        "In the Media": {
+            "text": "Brave New World",
+            "url": "https://www.notion.so/Brave-New-World-f9cd9fb4934183cb84f801b68639b4c7?pvs=21"
+        },
+        "Style": [
+            "Contemporary"
+        ],
+        "Address ": "20 Fenchurch St, London EC3M 3BY, UK",
+        "Status": "Built",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Office",
+        "Latitude": 51.51132,
+        "Longitude": -0.08354,
+        "Relevant?": "Yes"
     },
     {
         "Name": "Helix Bridge",
@@ -1765,8 +1945,8 @@
         "City, Region": "Singapore",
         "Country": "Singapore",
         "Function": "Residential",
-        "Latitude": 1.2773089,
-        "Longitude": 103.8530138,
+        "Latitude": 1.27731,
+        "Longitude": 103.85301,
         "Relevant?": "Yes"
     },
     {
@@ -1797,6 +1977,33 @@
         "Latitude": 31.2345,
         "Longitude": 121.4826,
         "Relevant?": "Yes"
+    },
+    {
+        "Name": "Adams Plaza Bridge",
+        "Architect": "",
+        "Year": "",
+        "In the Media": [
+            {
+                "text": "Brave New World",
+                "url": "https://www.notion.so/Brave-New-World-f9cd9fb4934183cb84f801b68639b4c7?pvs=21"
+            },
+            {
+                "text": "Star Wars: Andor",
+                "url": "https://www.notion.so/Star-Wars-Andor-e27d9fb4934182c69e5d017804a83c06?pvs=21"
+            }
+        ],
+        "Style": [
+            "Contemporary",
+            "Hightech"
+        ],
+        "Address ": "Adams Pl Bridge, London E14 9QN, Reino Unido",
+        "Status": "",
+        "City, Region": "London",
+        "Country": "UK",
+        "Function": "Bridge",
+        "Latitude": 51.50577,
+        "Longitude": -0.01915,
+        "Relevant?": "No"
     },
     {
         "Name": "Sistema Metro, Línea 1",
