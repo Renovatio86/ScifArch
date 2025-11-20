@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sci-Fi Architecture Map</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        #map { width: 100%; height: 100vh; z-index: 1; }
+
+        /* Markers */
+        .custom-building-marker {
+            background: white;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, border-color 0.2s;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-building-marker:hover {
+            transform: scale(1.15);
+            border-color: #3b82f6;
+            z-index: 1000 !important;
+        }
+        .custom-building-marker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Clusters */
+        .marker-cluster-custom {
+            background-color: rgba(59, 130, 246, 0.95);
+            border: 3px solid white;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Scrollbar utilities */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+        /* Animations */
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .slide-in-panel { animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+
+        /* Form Controls */
+        .checkbox-wrapper:hover { background-color: #f3f4f6; }
+        .filter-group-content { transition: max-height 0.3s ease-out; max-height: 0; overflow: hidden; }
+        .filter-group-content.open { max-height: 300px; overflow-y: auto; }
+    </style>
+</head>
+<body class="bg-gray-200 overflow-hidden relative">
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="absolute inset-0 z-[5000] bg-gray-100 flex flex-col items-center justify-center">
+        <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-500 font-medium text-sm">Loading Sci-Fi Database...</p>
+    </div>
+
+    <!-- Header -->
+    <div class="absolute top-6 left-6 z-[1500] pointer-events-none flex gap-4">
+        <div class="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border border-white/50 pointer-events-auto flex items-center gap-3">
+            <div class="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white shrink-0">
+                <i data-lucide="building-2" width="16"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-gray-900 text-sm leading-tight">Sci-Fi Architecture</h1>
+                <p class="text-[10px] md:text-xs text-gray-500">Location Scout</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Button -->
+    <div class="absolute top-6 right-6 z-[1500]">
+        <button onclick="toggleFilters()" class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-white/50 hover:bg-white text-gray-700 hover:text-blue-600 transition-all group relative">
+            <i data-lucide="sliders-horizontal" width="20"></i>
+            <span id="filter-badge" class="hidden absolute top-0 right-0 -mt-1 -mr-1 w-3 h-3 bg-blue-600 rounded-full border-2 border-white"></span>
+        </button>
+    </div>
+
+    <!-- Filter Panel -->
+    <div id="filter-panel-overlay" class="hidden absolute inset-0 z-[3000] bg-black/20 backdrop-blur-sm fade-in" onclick="toggleFilters()"></div>
+    <div id="filter-panel" class="hidden absolute z-[3001] top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl transform transition-transform duration-300 translate-x-full flex flex-col">
+
+        <!-- Header -->
+        <div class="p-5 border-b border-gray-100 flex items-center justify-between bg-white z-10">
+            <h2 class="text-lg font-bold text-gray-900">Filters</h2>
+            <div class="flex gap-3">
+                <button onclick="resetFilters()" class="text-xs font-medium text-gray-500 hover:text-red-500 transition-colors">Reset All</button>
+                <button onclick="toggleFilters()" class="p-1 hover:bg-gray-100 rounded-full transition-colors">
+                    <i data-lucide="x" width="20"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6 hide-scrollbar pb-20">
+
+            <!-- Year Slider (Inputs) -->
+            <div>
+                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 block">Construction Year</label>
+                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                    <input type="number" id="min-year" onchange="applyFilters()" class="w-full bg-transparent text-sm font-semibold text-gray-800 outline-none border-b border-gray-200 focus:border-blue-500 text-center" placeholder="Min">
+                    <span class="text-gray-300">-</span>
+                    <input type="number" id="max-year" onchange="applyFilters()" class="w-full bg-transparent text-sm font-semibold text-gray-800 outline-none border-b border-gray-200 focus:border-blue-500 text-center" placeholder="Max">
+                </div>
+            </div>
+
+            <!-- Accordion Filters -->
+            <div id="filter-container" class="space-y-4">
+                <!-- Architect Filter -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('architect-accordion')" class="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <span class="text-sm font-bold text-gray-700">Architects</span>
+                        <i data-lucide="chevron-down" width="16" class="text-gray-400"></i>
+                    </button>
+                    <div id="architect-accordion" class="filter-group-content bg-white custom-scrollbar">
+                        <div class="p-2 sticky top-0 bg-white border-b border-gray-100">
+                            <input type="text" placeholder="Search..." onkeyup="filterList(this, 'architect-list')" class="w-full text-xs p-2 bg-gray-50 rounded-md outline-none border border-gray-200 focus:border-blue-400">
+                        </div>
+                        <div id="architect-list" class="p-2 space-y-1">
+                            <!-- Checkboxes injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Style Filter -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('style-accordion')" class="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <span class="text-sm font-bold text-gray-700">Architectural Style</span>
+                        <i data-lucide="chevron-down" width="16" class="text-gray-400"></i>
+                    </button>
+                    <div id="style-accordion" class="filter-group-content bg-white custom-scrollbar">
+                        <div class="p-2 sticky top-0 bg-white border-b border-gray-100">
+                            <input type="text" placeholder="Search..." onkeyup="filterList(this, 'style-list')" class="w-full text-xs p-2 bg-gray-50 rounded-md outline-none border border-gray-200 focus:border-blue-400">
+                        </div>
+                        <div id="style-list" class="p-2 space-y-1">
+                            <!-- Checkboxes injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movies Filter -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('movie-accordion')" class="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <span class="text-sm font-bold text-gray-700">In the Media</span>
+                        <i data-lucide="chevron-down" width="16" class="text-gray-400"></i>
+                    </button>
+                    <div id="movie-accordion" class="filter-group-content bg-white custom-scrollbar">
+                        <div class="p-2 sticky top-0 bg-white border-b border-gray-100">
+                            <input type="text" placeholder="Search..." onkeyup="filterList(this, 'movie-list')" class="w-full text-xs p-2 bg-gray-50 rounded-md outline-none border border-gray-200 focus:border-blue-400">
+                        </div>
+                        <div id="movie-list" class="p-2 space-y-1">
+                            <!-- Checkboxes injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-gray-100 bg-gray-50 text-center text-xs text-gray-400 flex justify-between items-center">
+            <span>Showing <strong id="result-count" class="text-gray-800">0</strong> locations</span>
+        </div>
+    </div>
+
+    <!-- Detail Panel (Card) -->
+    <div id="panel-container" class="hidden absolute z-[2000] inset-4 md:inset-y-4 md:left-auto md:right-4 md:w-96 pointer-events-none">
+        <div id="detail-panel" class="w-full h-full bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 overflow-hidden flex flex-col pointer-events-auto slide-in-panel">
+
+            <div class="absolute top-3 right-3 z-[2010]">
+                <button onclick="closePanel()" class="p-2 bg-white/80 hover:bg-white rounded-full transition-colors cursor-pointer shadow-sm backdrop-blur">
+                    <i data-lucide="x" width="18" class="text-gray-800"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scrollbar">
+
+                <!-- Hero Image -->
+                <div class="relative h-56 w-full">
+                    <img id="p-hero-img" src="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                         <h1 id="p-name" class="text-2xl font-bold text-white leading-tight drop-shadow-md">Building Name</h1>
+                         <div class="flex items-center gap-2 text-gray-300 mt-1 text-xs font-medium">
+                            <i data-lucide="map-pin" width="12"></i>
+                            <span id="p-address">Location</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-5">
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                            <div class="flex items-center gap-1.5 text-blue-600 mb-1">
+                                <i data-lucide="calendar" width="14"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Year</span>
+                            </div>
+                            <span id="p-year" class="text-sm font-bold text-gray-800">2024</span>
+                        </div>
+                        <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100">
+                            <div class="flex items-center gap-1.5 text-indigo-600 mb-1">
+                                <i data-lucide="layers" width="14"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Status</span>
+                            </div>
+                            <span id="p-status" class="text-sm font-bold text-gray-800 truncate block">Standing</span>
+                        </div>
+                    </div>
+
+                    <!-- Architect -->
+                    <div class="mb-6">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Architect</h3>
+                        <div class="flex flex-wrap gap-2" id="p-architects">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Styles -->
+                     <div class="mb-6">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Style</h3>
+                        <div class="flex flex-wrap gap-2" id="p-styles">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Movies Section -->
+                    <div class="mb-6">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Featured In Media</h3>
+                        <div id="p-movies" class="flex flex-col gap-2">
+                            <!-- Tags -->
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-6">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Function</h3>
+                        <p id="p-function" class="text-sm text-gray-600 leading-relaxed">Description...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        const DATA_URL = './map_data.json';
+        const GENERIC_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop';
+
+        let buildings = [];
+        let map, markers;
+        let activeFilters = {
+            minYear: null,
+            maxYear: null,
+            architects: new Set(),
+            styles: new Set(),
+            movies: new Set()
+        };
+
+        // --- INIT ---
+        lucide.createIcons();
+        initMap();
+        fetchData();
+
+        function initMap() {
+            map = L.map('map', { zoomControl: false, minZoom: 2 }).setView([20, 0], 2);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO',
+                maxZoom: 19
+            }).addTo(map);
+
+            markers = L.markerClusterGroup({
+                showCoverageOnHover: false,
+                zoomToBoundsOnClick: true,
+                spiderfyOnMaxZoom: true,
+                maxClusterRadius: 50,
+                iconCreateFunction: function(cluster) {
+                    return L.divIcon({
+                        html: `<div class="marker-cluster-custom">${cluster.getChildCount()}</div>`,
+                        className: '',
+                        iconSize: L.point(40, 40)
+                    });
+                }
+            });
+            map.addLayer(markers);
+        }
+
+        // --- DATA HANDLING ---
+        async function fetchData() {
+            try {
+                const res = await fetch(DATA_URL);
+                const raw = await res.json();
+
+                buildings = raw.map((item, i) => normalizeData(item, i)).filter(b => b.lat && b.lng);
+
+                populateFilters();
+                applyFilters();
+                document.getElementById('loading-overlay').classList.add('hidden');
+            } catch (e) {
+                console.error(e);
+                document.getElementById('loading-overlay').innerHTML = '<p class="text-red-500 font-bold">Error loading data.</p>';
+            }
+        }
+
+        function normalizeData(item, index) {
+            // Generic key getter
+            const get = (key) => item[key] || item[Object.keys(item).find(k => k.toLowerCase().includes(key.toLowerCase()))];
+
+            // Helper: Extract entities into standardized { label, url } objects
+            const extractEntities = (raw) => {
+                if (!raw) return [];
+
+                // If it's an array
+                if (Array.isArray(raw)) {
+                    return raw.map(entry => {
+                        if (typeof entry === 'string') return { label: entry.trim(), url: null };
+                        if (typeof entry === 'object' && entry.text) return { label: entry.text.trim(), url: entry.url || null };
+                        return null;
+                    }).filter(Boolean);
+                }
+
+                // If it's a single object (Notion style)
+                if (typeof raw === 'object' && raw.text) {
+                    return [{ label: raw.text.trim(), url: raw.url || null }];
+                }
+
+                // If it's a comma separated string
+                if (typeof raw === 'string') {
+                    return raw.split(',').map(s => ({ label: s.trim(), url: null })).filter(s => s.label.length > 0);
+                }
+
+                return [];
+            };
+
+            // Construct full address if specific address is empty
+            let address = get('Address '); // Note the space in your json key
+            const city = get('City, Region');
+            const country = get('Country');
+
+            if (!address || address.trim() === "") {
+                const parts = [];
+                if (city) parts.push(city);
+                if (country) parts.push(country);
+                address = parts.join(', ');
+            }
+
+            return {
+                id: index,
+                name: get('Name') || 'Unknown Location',
+                lat: parseFloat(get('Latitude')),
+                lng: parseFloat(get('Longitude')),
+                year: parseInt(get('Year')) || 0,
+                address: address || 'Unknown Address',
+                status: get('Status') || 'Unknown',
+                function: get('Function') || '',
+
+                // Complex fields parsed into Arrays of Objects
+                architects: extractEntities(get('Architect')),
+                styles: extractEntities(get('Style')),
+                movies: extractEntities(get('In the Media')),
+
+                cover: GENERIC_IMAGE
+            };
+        }
+
+        // --- FILTER UI ---
+        function populateFilters() {
+            // Helper to count entity labels
+            const countEntities = (field) => {
+                return buildings.reduce((acc, curr) => {
+                    curr[field].forEach(entity => {
+                        if (entity.label) {
+                            acc[entity.label] = (acc[entity.label] || 0) + 1;
+                        }
+                    });
+                    return acc;
+                }, {});
+            };
+
+            const architectCounts = countEntities('architects');
+            const styleCounts = countEntities('styles');
+            const movieCounts = countEntities('movies');
+
+            renderCheckboxList('architect-list', architectCounts, 'architects');
+            renderCheckboxList('style-list', styleCounts, 'styles');
+            renderCheckboxList('movie-list', movieCounts, 'movies');
+        }
+
+        function renderCheckboxList(containerId, counts, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const sortedKeys = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+
+            sortedKeys.forEach(key => {
+                const count = counts[key];
+                const div = document.createElement('div');
+                div.className = 'checkbox-wrapper flex items-center p-2 rounded-md cursor-pointer transition-colors';
+                div.onclick = (e) => {
+                    if (e.target.type !== 'checkbox') {
+                        const cb = div.querySelector('input');
+                        cb.checked = !cb.checked;
+                        toggleFilterState(type, key, cb.checked);
+                    }
+                };
+
+                div.innerHTML = `
+                    <input type="checkbox" class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer"
+                        onchange="toggleFilterState('${type}', '${key.replace(/'/g, "\\'")}', this.checked)">
+                    <span class="ml-2 text-xs text-gray-700 flex-1 truncate select-none">${key}</span>
+                    <span class="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">${count}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // --- FILTER LOGIC ---
+        function toggleFilterState(type, value, isChecked) {
+            if (isChecked) activeFilters[type].add(value);
+            else activeFilters[type].delete(value);
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const min = parseInt(document.getElementById('min-year').value) || 0;
+            const max = parseInt(document.getElementById('max-year').value) || 9999;
+
+            const filtered = buildings.filter(b => {
+                // Year
+                if (b.year !== 0 && (b.year < min || b.year > max)) return false;
+
+                // Architects (check if ANY of the building's architects match the active filter set)
+                if (activeFilters.architects.size > 0) {
+                    const hasMatch = b.architects.some(a => activeFilters.architects.has(a.label));
+                    if (!hasMatch) return false;
+                }
+
+                // Styles
+                if (activeFilters.styles.size > 0) {
+                    const hasMatch = b.styles.some(s => activeFilters.styles.has(s.label));
+                    if (!hasMatch) return false;
+                }
+
+                // Movies
+                if (activeFilters.movies.size > 0) {
+                    const hasMatch = b.movies.some(m => activeFilters.movies.has(m.label));
+                    if (!hasMatch) return false;
+                }
+
+                return true;
+            });
+
+            updateMap(filtered);
+            document.getElementById('result-count').textContent = filtered.length;
+
+            // Badge
+            const totalFilters = activeFilters.architects.size + activeFilters.styles.size + activeFilters.movies.size;
+            const badge = document.getElementById('filter-badge');
+            if (totalFilters > 0) badge.classList.remove('hidden');
+            else badge.classList.add('hidden');
+        }
+
+        function updateMap(data) {
+            markers.clearLayers();
+            data.forEach(b => {
+                const icon = L.divIcon({
+                    html: `<div class="custom-building-marker" style="width: 40px; height: 40px;">
+                            <img src="${b.cover}" alt="${b.name}">
+                           </div>`,
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 20]
+                });
+                const m = L.marker([b.lat, b.lng], { icon: icon });
+                m.on('click', () => openPanel(b));
+                markers.addLayer(m);
+            });
+        }
+
+        // --- UI INTERACTIONS ---
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            const isOpen = el.classList.contains('open');
+            document.querySelectorAll('.filter-group-content').forEach(d => d.classList.remove('open'));
+            if (!isOpen) el.classList.add('open');
+        }
+
+        function filterList(input, listId) {
+            const term = input.value.toLowerCase();
+            const items = document.querySelectorAll(`#${listId} .checkbox-wrapper`);
+            items.forEach(item => {
+                const text = item.querySelector('span').textContent.toLowerCase();
+                item.style.display = text.includes(term) ? 'flex' : 'none';
+            });
+        }
+
+        // --- DETAIL PANEL ---
+        const panel = document.getElementById('panel-container');
+
+        function openPanel(b) {
+            document.getElementById('p-name').textContent = b.name;
+            document.getElementById('p-address').textContent = b.address;
+            document.getElementById('p-hero-img').src = b.cover;
+            document.getElementById('p-year').textContent = b.year || 'Unknown';
+            document.getElementById('p-status').textContent = b.status || '-';
+            document.getElementById('p-function').textContent = b.function || 'No description available.';
+
+            // Render Architects (Links)
+            const archContainer = document.getElementById('p-architects');
+            archContainer.innerHTML = '';
+            if (b.architects.length === 0) archContainer.innerHTML = '<span class="text-xs text-gray-500">Unknown</span>';
+            b.architects.forEach(a => {
+                if (a.url) {
+                    archContainer.innerHTML += `<a href="${a.url}" target="_blank" class="flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-blue-50 text-blue-700 hover:text-blue-800 text-xs font-medium rounded border border-gray-200 hover:border-blue-200 transition-colors"><i data-lucide="link" width="10"></i>${a.label}</a>`;
+                } else {
+                    archContainer.innerHTML += `<span class="px-2 py-1 bg-gray-50 text-gray-600 text-xs font-medium rounded border border-gray-200">${a.label}</span>`;
+                }
+            });
+
+            // Render Styles
+            const styleContainer = document.getElementById('p-styles');
+            styleContainer.innerHTML = '';
+            if (b.styles.length === 0) styleContainer.innerHTML = '<span class="text-xs text-gray-500">-</span>';
+            b.styles.forEach(s => {
+                if (s.url) {
+                     styleContainer.innerHTML += `<a href="${s.url}" target="_blank" class="px-2 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-medium rounded border border-purple-100 transition-colors">${s.label}</a>`;
+                } else {
+                     styleContainer.innerHTML += `<span class="px-2 py-1 bg-gray-50 text-gray-600 text-xs font-medium rounded border border-gray-200">${s.label}</span>`;
+                }
+            });
+
+            // Render Movies
+            const movContainer = document.getElementById('p-movies');
+            movContainer.innerHTML = '';
+            if (b.movies.length === 0) movContainer.innerHTML = '<span class="text-xs text-gray-500">No media data</span>';
+            b.movies.forEach(m => {
+                if (m.url) {
+                     movContainer.innerHTML += `<a href="${m.url}" target="_blank" class="flex items-center justify-between w-full px-3 py-2 bg-white hover:bg-gray-50 border border-gray-200 hover:border-blue-300 rounded-lg shadow-sm group transition-all">
+                        <span class="text-sm font-medium text-gray-800 group-hover:text-blue-700">${m.label}</span>
+                        <i data-lucide="external-link" width="12" class="text-gray-400 group-hover:text-blue-500"></i>
+                     </a>`;
+                } else {
+                     movContainer.innerHTML += `<div class="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-lg text-sm text-gray-600">${m.label}</div>`;
+                }
+            });
+
+            // Re-init icons for injected content
+            lucide.createIcons();
+
+            panel.classList.remove('hidden');
+            map.flyTo([b.lat, b.lng], 12, { paddingTopLeft: [0, 0] });
+        }
+
+        function closePanel() { panel.classList.add('hidden'); }
+        function resetFilters() {
+            activeFilters = { minYear: null, maxYear: null, architects: new Set(), styles: new Set(), movies: new Set() };
+            document.getElementById('min-year').value = '';
+            document.getElementById('max-year').value = '';
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            applyFilters();
+        }
+        function toggleFilters() {
+            const p = document.getElementById('filter-panel');
+            const o = document.getElementById('filter-panel-overlay');
+            if (p.classList.contains('translate-x-full')) {
+                p.classList.remove('hidden'); o.classList.remove('hidden');
+                setTimeout(() => p.classList.remove('translate-x-full'), 10);
+            } else {
+                p.classList.add('translate-x-full'); o.classList.add('hidden');
+                setTimeout(() => p.classList.add('hidden'), 300);
+            }
+        }
+
+        // Globals
+        window.toggleFilters = toggleFilters;
+        window.resetFilters = resetFilters;
+        window.applyFilters = applyFilters;
+        window.closePanel = closePanel;
+        window.toggleAccordion = toggleAccordion;
+        window.filterList = filterList;
+        window.toggleFilterState = toggleFilterState;
+    </script>
+</body>
+</html>
